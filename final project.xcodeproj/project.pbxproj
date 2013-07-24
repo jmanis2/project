@@ -18,6 +18,7 @@
 		1F259497179F2F46003D388B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F259496179F2F46003D388B /* main.cpp */; };
 		1F259499179F2F46003D388B /* ecbtest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F259498179F2F46003D388B /* ecbtest.1 */; };
 		1F58E6D4179F532700CD26D2 /* libcryptocpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F58E6D3179F532700CD26D2 /* libcryptocpp.a */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1F9A4DF7179F612C0009E944 /* libcryptocpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F58E6D3179F532700CD26D2 /* libcryptocpp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -110,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9A4DF7179F612C0009E944 /* libcryptocpp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +459,8 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/cryptopp562\"",
+					"\"$(SRCROOT)/../cryptocpp\"",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Modern_Crypto-dddufzsnnvrdjhdftjwkpotqjmpc/Build/Products/Debug\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -468,7 +471,8 @@
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/cryptopp562\"",
+					"\"$(SRCROOT)/../cryptocpp\"",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Modern_Crypto-dddufzsnnvrdjhdftjwkpotqjmpc/Build/Products/Debug\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
