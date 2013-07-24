@@ -17,8 +17,7 @@
 		1F25948F179F29F7003D388B /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F25948D179F29F7003D388B /* StdAfx.cpp */; };
 		1F259497179F2F46003D388B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F259496179F2F46003D388B /* main.cpp */; };
 		1F259499179F2F46003D388B /* ecbtest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F259498179F2F46003D388B /* ecbtest.1 */; };
-		1F58E6D4179F532700CD26D2 /* libcryptocpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F58E6D3179F532700CD26D2 /* libcryptocpp.a */; settings = {ATTRIBUTES = (Weak, ); }; };
-		1F9A4DF7179F612C0009E944 /* libcryptocpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F58E6D3179F532700CD26D2 /* libcryptocpp.a */; };
+		1FD31E1117A090F40021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E0E17A08C880021D1EB /* libcryptopp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -82,6 +81,144 @@
 		1F259496179F2F46003D388B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1F259498179F2F46003D388B /* ecbtest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ecbtest.1; sourceTree = "<group>"; };
 		1F58E6D3179F532700CD26D2 /* libcryptocpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcryptocpp.a; path = "../../../../../Library/Developer/Xcode/DerivedData/Modern_Crypto-dddufzsnnvrdjhdftjwkpotqjmpc/Build/Products/Debug/libcryptocpp.a"; sourceTree = "<group>"; };
+		1FD31D8117A084720021D1EB /* 3way.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = 3way.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/3way.h; sourceTree = "<group>"; };
+		1FD31D8217A084720021D1EB /* adler32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = adler32.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/adler32.h; sourceTree = "<group>"; };
+		1FD31D8317A084720021D1EB /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aes.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/aes.h; sourceTree = "<group>"; };
+		1FD31D8417A084720021D1EB /* algebra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = algebra.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/algebra.h; sourceTree = "<group>"; };
+		1FD31D8517A084720021D1EB /* algparam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = algparam.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/algparam.h; sourceTree = "<group>"; };
+		1FD31D8617A084720021D1EB /* arc4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = arc4.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/arc4.h; sourceTree = "<group>"; };
+		1FD31D8717A084720021D1EB /* argnames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = argnames.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/argnames.h; sourceTree = "<group>"; };
+		1FD31D8817A084720021D1EB /* asn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asn.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/asn.h; sourceTree = "<group>"; };
+		1FD31D8917A084720021D1EB /* authenc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = authenc.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/authenc.h; sourceTree = "<group>"; };
+		1FD31D8A17A084720021D1EB /* base32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base32.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/base32.h; sourceTree = "<group>"; };
+		1FD31D8B17A084720021D1EB /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base64.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/base64.h; sourceTree = "<group>"; };
+		1FD31D8C17A084720021D1EB /* basecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = basecode.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/basecode.h; sourceTree = "<group>"; };
+		1FD31D8D17A084720021D1EB /* bench.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bench.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/bench.h; sourceTree = "<group>"; };
+		1FD31D8E17A084720021D1EB /* blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = blowfish.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/blowfish.h; sourceTree = "<group>"; };
+		1FD31D8F17A084720021D1EB /* blumshub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = blumshub.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/blumshub.h; sourceTree = "<group>"; };
+		1FD31D9017A084720021D1EB /* camellia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = camellia.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/camellia.h; sourceTree = "<group>"; };
+		1FD31D9117A084720021D1EB /* cast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cast.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/cast.h; sourceTree = "<group>"; };
+		1FD31D9217A084720021D1EB /* cbcmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cbcmac.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/cbcmac.h; sourceTree = "<group>"; };
+		1FD31D9317A084720021D1EB /* ccm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccm.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/ccm.h; sourceTree = "<group>"; };
+		1FD31D9417A084720021D1EB /* channels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = channels.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/channels.h; sourceTree = "<group>"; };
+		1FD31D9517A084720021D1EB /* cmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cmac.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/cmac.h; sourceTree = "<group>"; };
+		1FD31D9617A084720021D1EB /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/config.h; sourceTree = "<group>"; };
+		1FD31D9717A084720021D1EB /* cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpu.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/cpu.h; sourceTree = "<group>"; };
+		1FD31D9817A084720021D1EB /* crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crc.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/crc.h; sourceTree = "<group>"; };
+		1FD31D9917A084720021D1EB /* cryptlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cryptlib.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/cryptlib.h; sourceTree = "<group>"; };
+		1FD31D9A17A084720021D1EB /* default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = default.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/default.h; sourceTree = "<group>"; };
+		1FD31D9B17A084720021D1EB /* des.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = des.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/des.h; sourceTree = "<group>"; };
+		1FD31D9C17A084720021D1EB /* dh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dh.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/dh.h; sourceTree = "<group>"; };
+		1FD31D9D17A084720021D1EB /* dh2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dh2.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/dh2.h; sourceTree = "<group>"; };
+		1FD31D9E17A084720021D1EB /* dll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dll.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/dll.h; sourceTree = "<group>"; };
+		1FD31D9F17A084720021D1EB /* dmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dmac.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/dmac.h; sourceTree = "<group>"; };
+		1FD31DA017A084720021D1EB /* dsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dsa.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/dsa.h; sourceTree = "<group>"; };
+		1FD31DA117A084720021D1EB /* eax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eax.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/eax.h; sourceTree = "<group>"; };
+		1FD31DA217A084720021D1EB /* ec2n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ec2n.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/ec2n.h; sourceTree = "<group>"; };
+		1FD31DA317A084720021D1EB /* eccrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eccrypto.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/eccrypto.h; sourceTree = "<group>"; };
+		1FD31DA417A084720021D1EB /* ecp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ecp.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/ecp.h; sourceTree = "<group>"; };
+		1FD31DA517A084720021D1EB /* elgamal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = elgamal.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/elgamal.h; sourceTree = "<group>"; };
+		1FD31DA617A084720021D1EB /* emsa2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = emsa2.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/emsa2.h; sourceTree = "<group>"; };
+		1FD31DA717A084730021D1EB /* eprecomp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eprecomp.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/eprecomp.h; sourceTree = "<group>"; };
+		1FD31DA817A084730021D1EB /* esign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = esign.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/esign.h; sourceTree = "<group>"; };
+		1FD31DA917A084730021D1EB /* factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = factory.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/factory.h; sourceTree = "<group>"; };
+		1FD31DAA17A084730021D1EB /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = files.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/files.h; sourceTree = "<group>"; };
+		1FD31DAB17A084730021D1EB /* filters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = filters.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/filters.h; sourceTree = "<group>"; };
+		1FD31DAC17A084730021D1EB /* fips140.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fips140.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/fips140.h; sourceTree = "<group>"; };
+		1FD31DAD17A084730021D1EB /* fltrimpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fltrimpl.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/fltrimpl.h; sourceTree = "<group>"; };
+		1FD31DAE17A084730021D1EB /* gcm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gcm.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/gcm.h; sourceTree = "<group>"; };
+		1FD31DAF17A084730021D1EB /* gf2_32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gf2_32.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/gf2_32.h; sourceTree = "<group>"; };
+		1FD31DB017A084730021D1EB /* gf2n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gf2n.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/gf2n.h; sourceTree = "<group>"; };
+		1FD31DB117A084730021D1EB /* gf256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gf256.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/gf256.h; sourceTree = "<group>"; };
+		1FD31DB217A084730021D1EB /* gfpcrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gfpcrypt.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/gfpcrypt.h; sourceTree = "<group>"; };
+		1FD31DB317A084730021D1EB /* gost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gost.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/gost.h; sourceTree = "<group>"; };
+		1FD31DB417A084730021D1EB /* gzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gzip.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/gzip.h; sourceTree = "<group>"; };
+		1FD31DB517A084730021D1EB /* hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hex.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/hex.h; sourceTree = "<group>"; };
+		1FD31DB617A084730021D1EB /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/hmac.h; sourceTree = "<group>"; };
+		1FD31DB717A084730021D1EB /* hrtimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hrtimer.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/hrtimer.h; sourceTree = "<group>"; };
+		1FD31DB817A084730021D1EB /* ida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ida.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/ida.h; sourceTree = "<group>"; };
+		1FD31DB917A084730021D1EB /* idea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = idea.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/idea.h; sourceTree = "<group>"; };
+		1FD31DBA17A084730021D1EB /* integer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = integer.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/integer.h; sourceTree = "<group>"; };
+		1FD31DBB17A084730021D1EB /* iterhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iterhash.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/iterhash.h; sourceTree = "<group>"; };
+		1FD31DBC17A084730021D1EB /* lubyrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lubyrack.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/lubyrack.h; sourceTree = "<group>"; };
+		1FD31DBD17A084730021D1EB /* luc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = luc.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/luc.h; sourceTree = "<group>"; };
+		1FD31DBE17A084730021D1EB /* mars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mars.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/mars.h; sourceTree = "<group>"; };
+		1FD31DBF17A084730021D1EB /* md2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md2.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/md2.h; sourceTree = "<group>"; };
+		1FD31DC017A084730021D1EB /* md4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md4.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/md4.h; sourceTree = "<group>"; };
+		1FD31DC117A084730021D1EB /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md5.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/md5.h; sourceTree = "<group>"; };
+		1FD31DC217A084730021D1EB /* mdc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mdc.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/mdc.h; sourceTree = "<group>"; };
+		1FD31DC317A084730021D1EB /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = misc.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/misc.h; sourceTree = "<group>"; };
+		1FD31DC417A084730021D1EB /* modarith.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = modarith.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/modarith.h; sourceTree = "<group>"; };
+		1FD31DC517A084730021D1EB /* modes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = modes.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/modes.h; sourceTree = "<group>"; };
+		1FD31DC617A084730021D1EB /* modexppc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = modexppc.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/modexppc.h; sourceTree = "<group>"; };
+		1FD31DC717A084730021D1EB /* mqueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mqueue.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/mqueue.h; sourceTree = "<group>"; };
+		1FD31DC817A084730021D1EB /* mqv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mqv.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/mqv.h; sourceTree = "<group>"; };
+		1FD31DC917A084730021D1EB /* nbtheory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nbtheory.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/nbtheory.h; sourceTree = "<group>"; };
+		1FD31DCA17A084730021D1EB /* network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/network.h; sourceTree = "<group>"; };
+		1FD31DCB17A084730021D1EB /* nr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nr.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/nr.h; sourceTree = "<group>"; };
+		1FD31DCC17A084730021D1EB /* oaep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = oaep.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/oaep.h; sourceTree = "<group>"; };
+		1FD31DCD17A084730021D1EB /* oids.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = oids.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/oids.h; sourceTree = "<group>"; };
+		1FD31DCE17A084730021D1EB /* osrng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = osrng.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/osrng.h; sourceTree = "<group>"; };
+		1FD31DCF17A084730021D1EB /* panama.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = panama.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/panama.h; sourceTree = "<group>"; };
+		1FD31DD017A084730021D1EB /* pch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pch.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/pch.h; sourceTree = "<group>"; };
+		1FD31DD117A084730021D1EB /* pkcspad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkcspad.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/pkcspad.h; sourceTree = "<group>"; };
+		1FD31DD217A084730021D1EB /* polynomi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = polynomi.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/polynomi.h; sourceTree = "<group>"; };
+		1FD31DD317A084730021D1EB /* pssr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pssr.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/pssr.h; sourceTree = "<group>"; };
+		1FD31DD417A084730021D1EB /* pubkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pubkey.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/pubkey.h; sourceTree = "<group>"; };
+		1FD31DD517A084730021D1EB /* pwdbased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pwdbased.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/pwdbased.h; sourceTree = "<group>"; };
+		1FD31DD617A084730021D1EB /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = queue.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/queue.h; sourceTree = "<group>"; };
+		1FD31DD717A084730021D1EB /* rabin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rabin.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/rabin.h; sourceTree = "<group>"; };
+		1FD31DD817A084730021D1EB /* randpool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randpool.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/randpool.h; sourceTree = "<group>"; };
+		1FD31DD917A084730021D1EB /* rc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rc2.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/rc2.h; sourceTree = "<group>"; };
+		1FD31DDA17A084730021D1EB /* rc5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rc5.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/rc5.h; sourceTree = "<group>"; };
+		1FD31DDB17A084730021D1EB /* rc6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rc6.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/rc6.h; sourceTree = "<group>"; };
+		1FD31DDC17A084730021D1EB /* resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = resource.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/resource.h; sourceTree = "<group>"; };
+		1FD31DDD17A084730021D1EB /* rijndael.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rijndael.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/rijndael.h; sourceTree = "<group>"; };
+		1FD31DDE17A084730021D1EB /* ripemd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ripemd.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/ripemd.h; sourceTree = "<group>"; };
+		1FD31DDF17A084730021D1EB /* rng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rng.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/rng.h; sourceTree = "<group>"; };
+		1FD31DE017A084730021D1EB /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rsa.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/rsa.h; sourceTree = "<group>"; };
+		1FD31DE117A084730021D1EB /* rw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rw.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/rw.h; sourceTree = "<group>"; };
+		1FD31DE217A084730021D1EB /* safer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = safer.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/safer.h; sourceTree = "<group>"; };
+		1FD31DE317A084730021D1EB /* salsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salsa.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/salsa.h; sourceTree = "<group>"; };
+		1FD31DE417A084730021D1EB /* seal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seal.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/seal.h; sourceTree = "<group>"; };
+		1FD31DE517A084730021D1EB /* secblock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = secblock.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/secblock.h; sourceTree = "<group>"; };
+		1FD31DE617A084730021D1EB /* seckey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seckey.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/seckey.h; sourceTree = "<group>"; };
+		1FD31DE717A084730021D1EB /* seed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seed.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/seed.h; sourceTree = "<group>"; };
+		1FD31DE817A084730021D1EB /* serpent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = serpent.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/serpent.h; sourceTree = "<group>"; };
+		1FD31DE917A084730021D1EB /* serpentp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = serpentp.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/serpentp.h; sourceTree = "<group>"; };
+		1FD31DEA17A084730021D1EB /* sha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/sha.h; sourceTree = "<group>"; };
+		1FD31DEB17A084730021D1EB /* sha3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha3.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/sha3.h; sourceTree = "<group>"; };
+		1FD31DEC17A084730021D1EB /* shacal2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shacal2.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/shacal2.h; sourceTree = "<group>"; };
+		1FD31DED17A084730021D1EB /* shark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shark.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/shark.h; sourceTree = "<group>"; };
+		1FD31DEE17A084730021D1EB /* simple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = simple.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/simple.h; sourceTree = "<group>"; };
+		1FD31DEF17A084730021D1EB /* skipjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = skipjack.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/skipjack.h; sourceTree = "<group>"; };
+		1FD31DF017A084730021D1EB /* smartptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = smartptr.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/smartptr.h; sourceTree = "<group>"; };
+		1FD31DF117A084730021D1EB /* socketft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = socketft.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/socketft.h; sourceTree = "<group>"; };
+		1FD31DF217A084730021D1EB /* sosemanuk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sosemanuk.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/sosemanuk.h; sourceTree = "<group>"; };
+		1FD31DF317A084730021D1EB /* square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = square.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/square.h; sourceTree = "<group>"; };
+		1FD31DF417A084730021D1EB /* StdAfx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StdAfx.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/StdAfx.h; sourceTree = "<group>"; };
+		1FD31DF517A084730021D1EB /* stdcpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdcpp.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/stdcpp.h; sourceTree = "<group>"; };
+		1FD31DF617A084730021D1EB /* strciphr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = strciphr.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/strciphr.h; sourceTree = "<group>"; };
+		1FD31DF717A084730021D1EB /* SymmetricCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SymmetricCipher.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/SymmetricCipher.h; sourceTree = "<group>"; };
+		1FD31DF817A084730021D1EB /* tea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tea.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/tea.h; sourceTree = "<group>"; };
+		1FD31DF917A084730021D1EB /* tiger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiger.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/tiger.h; sourceTree = "<group>"; };
+		1FD31DFA17A084730021D1EB /* trdlocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = trdlocal.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/trdlocal.h; sourceTree = "<group>"; };
+		1FD31DFB17A084730021D1EB /* trunhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = trunhash.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/trunhash.h; sourceTree = "<group>"; };
+		1FD31DFC17A084730021D1EB /* ttmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ttmac.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/ttmac.h; sourceTree = "<group>"; };
+		1FD31DFD17A084730021D1EB /* twofish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = twofish.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/twofish.h; sourceTree = "<group>"; };
+		1FD31DFE17A084730021D1EB /* validate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = validate.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/validate.h; sourceTree = "<group>"; };
+		1FD31DFF17A084730021D1EB /* vmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vmac.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/vmac.h; sourceTree = "<group>"; };
+		1FD31E0017A084730021D1EB /* wait.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wait.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/wait.h; sourceTree = "<group>"; };
+		1FD31E0117A084730021D1EB /* wake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wake.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/wake.h; sourceTree = "<group>"; };
+		1FD31E0217A084730021D1EB /* whrlpool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = whrlpool.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/whrlpool.h; sourceTree = "<group>"; };
+		1FD31E0317A084730021D1EB /* winpipes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = winpipes.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/winpipes.h; sourceTree = "<group>"; };
+		1FD31E0417A084730021D1EB /* words.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = words.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/words.h; sourceTree = "<group>"; };
+		1FD31E0517A084730021D1EB /* xtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xtr.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/xtr.h; sourceTree = "<group>"; };
+		1FD31E0617A084730021D1EB /* xtrcrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xtrcrypt.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/xtrcrypt.h; sourceTree = "<group>"; };
+		1FD31E0717A084730021D1EB /* zdeflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zdeflate.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/zdeflate.h; sourceTree = "<group>"; };
+		1FD31E0817A084730021D1EB /* zinflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zinflate.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/zinflate.h; sourceTree = "<group>"; };
+		1FD31E0917A084730021D1EB /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zlib.h; path = ../../../../../Documents/GitHubs/cryptopp/cryptopp562/zlib.h; sourceTree = "<group>"; };
+		1FD31E0E17A08C880021D1EB /* libcryptopp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcryptopp.a; path = ../../../../../Downloads/cryptopp562/libcryptopp.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +226,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F58E6D4179F532700CD26D2 /* libcryptocpp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F9A4DF7179F612C0009E944 /* libcryptocpp.a in Frameworks */,
+				1FD31E1117A090F40021D1EB /* libcryptopp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +257,144 @@
 		1F259246179F0D7C003D388B = {
 			isa = PBXGroup;
 			children = (
+				1FD31E0E17A08C880021D1EB /* libcryptopp.a */,
+				1FD31D8117A084720021D1EB /* 3way.h */,
+				1FD31D8217A084720021D1EB /* adler32.h */,
+				1FD31D8317A084720021D1EB /* aes.h */,
+				1FD31D8417A084720021D1EB /* algebra.h */,
+				1FD31D8517A084720021D1EB /* algparam.h */,
+				1FD31D8617A084720021D1EB /* arc4.h */,
+				1FD31D8717A084720021D1EB /* argnames.h */,
+				1FD31D8817A084720021D1EB /* asn.h */,
+				1FD31D8917A084720021D1EB /* authenc.h */,
+				1FD31D8A17A084720021D1EB /* base32.h */,
+				1FD31D8B17A084720021D1EB /* base64.h */,
+				1FD31D8C17A084720021D1EB /* basecode.h */,
+				1FD31D8D17A084720021D1EB /* bench.h */,
+				1FD31D8E17A084720021D1EB /* blowfish.h */,
+				1FD31D8F17A084720021D1EB /* blumshub.h */,
+				1FD31D9017A084720021D1EB /* camellia.h */,
+				1FD31D9117A084720021D1EB /* cast.h */,
+				1FD31D9217A084720021D1EB /* cbcmac.h */,
+				1FD31D9317A084720021D1EB /* ccm.h */,
+				1FD31D9417A084720021D1EB /* channels.h */,
+				1FD31D9517A084720021D1EB /* cmac.h */,
+				1FD31D9617A084720021D1EB /* config.h */,
+				1FD31D9717A084720021D1EB /* cpu.h */,
+				1FD31D9817A084720021D1EB /* crc.h */,
+				1FD31D9917A084720021D1EB /* cryptlib.h */,
+				1FD31D9A17A084720021D1EB /* default.h */,
+				1FD31D9B17A084720021D1EB /* des.h */,
+				1FD31D9C17A084720021D1EB /* dh.h */,
+				1FD31D9D17A084720021D1EB /* dh2.h */,
+				1FD31D9E17A084720021D1EB /* dll.h */,
+				1FD31D9F17A084720021D1EB /* dmac.h */,
+				1FD31DA017A084720021D1EB /* dsa.h */,
+				1FD31DA117A084720021D1EB /* eax.h */,
+				1FD31DA217A084720021D1EB /* ec2n.h */,
+				1FD31DA317A084720021D1EB /* eccrypto.h */,
+				1FD31DA417A084720021D1EB /* ecp.h */,
+				1FD31DA517A084720021D1EB /* elgamal.h */,
+				1FD31DA617A084720021D1EB /* emsa2.h */,
+				1FD31DA717A084730021D1EB /* eprecomp.h */,
+				1FD31DA817A084730021D1EB /* esign.h */,
+				1FD31DA917A084730021D1EB /* factory.h */,
+				1FD31DAA17A084730021D1EB /* files.h */,
+				1FD31DAB17A084730021D1EB /* filters.h */,
+				1FD31DAC17A084730021D1EB /* fips140.h */,
+				1FD31DAD17A084730021D1EB /* fltrimpl.h */,
+				1FD31DAE17A084730021D1EB /* gcm.h */,
+				1FD31DAF17A084730021D1EB /* gf2_32.h */,
+				1FD31DB017A084730021D1EB /* gf2n.h */,
+				1FD31DB117A084730021D1EB /* gf256.h */,
+				1FD31DB217A084730021D1EB /* gfpcrypt.h */,
+				1FD31DB317A084730021D1EB /* gost.h */,
+				1FD31DB417A084730021D1EB /* gzip.h */,
+				1FD31DB517A084730021D1EB /* hex.h */,
+				1FD31DB617A084730021D1EB /* hmac.h */,
+				1FD31DB717A084730021D1EB /* hrtimer.h */,
+				1FD31DB817A084730021D1EB /* ida.h */,
+				1FD31DB917A084730021D1EB /* idea.h */,
+				1FD31DBA17A084730021D1EB /* integer.h */,
+				1FD31DBB17A084730021D1EB /* iterhash.h */,
+				1FD31DBC17A084730021D1EB /* lubyrack.h */,
+				1FD31DBD17A084730021D1EB /* luc.h */,
+				1FD31DBE17A084730021D1EB /* mars.h */,
+				1FD31DBF17A084730021D1EB /* md2.h */,
+				1FD31DC017A084730021D1EB /* md4.h */,
+				1FD31DC117A084730021D1EB /* md5.h */,
+				1FD31DC217A084730021D1EB /* mdc.h */,
+				1FD31DC317A084730021D1EB /* misc.h */,
+				1FD31DC417A084730021D1EB /* modarith.h */,
+				1FD31DC517A084730021D1EB /* modes.h */,
+				1FD31DC617A084730021D1EB /* modexppc.h */,
+				1FD31DC717A084730021D1EB /* mqueue.h */,
+				1FD31DC817A084730021D1EB /* mqv.h */,
+				1FD31DC917A084730021D1EB /* nbtheory.h */,
+				1FD31DCA17A084730021D1EB /* network.h */,
+				1FD31DCB17A084730021D1EB /* nr.h */,
+				1FD31DCC17A084730021D1EB /* oaep.h */,
+				1FD31DCD17A084730021D1EB /* oids.h */,
+				1FD31DCE17A084730021D1EB /* osrng.h */,
+				1FD31DCF17A084730021D1EB /* panama.h */,
+				1FD31DD017A084730021D1EB /* pch.h */,
+				1FD31DD117A084730021D1EB /* pkcspad.h */,
+				1FD31DD217A084730021D1EB /* polynomi.h */,
+				1FD31DD317A084730021D1EB /* pssr.h */,
+				1FD31DD417A084730021D1EB /* pubkey.h */,
+				1FD31DD517A084730021D1EB /* pwdbased.h */,
+				1FD31DD617A084730021D1EB /* queue.h */,
+				1FD31DD717A084730021D1EB /* rabin.h */,
+				1FD31DD817A084730021D1EB /* randpool.h */,
+				1FD31DD917A084730021D1EB /* rc2.h */,
+				1FD31DDA17A084730021D1EB /* rc5.h */,
+				1FD31DDB17A084730021D1EB /* rc6.h */,
+				1FD31DDC17A084730021D1EB /* resource.h */,
+				1FD31DDD17A084730021D1EB /* rijndael.h */,
+				1FD31DDE17A084730021D1EB /* ripemd.h */,
+				1FD31DDF17A084730021D1EB /* rng.h */,
+				1FD31DE017A084730021D1EB /* rsa.h */,
+				1FD31DE117A084730021D1EB /* rw.h */,
+				1FD31DE217A084730021D1EB /* safer.h */,
+				1FD31DE317A084730021D1EB /* salsa.h */,
+				1FD31DE417A084730021D1EB /* seal.h */,
+				1FD31DE517A084730021D1EB /* secblock.h */,
+				1FD31DE617A084730021D1EB /* seckey.h */,
+				1FD31DE717A084730021D1EB /* seed.h */,
+				1FD31DE817A084730021D1EB /* serpent.h */,
+				1FD31DE917A084730021D1EB /* serpentp.h */,
+				1FD31DEA17A084730021D1EB /* sha.h */,
+				1FD31DEB17A084730021D1EB /* sha3.h */,
+				1FD31DEC17A084730021D1EB /* shacal2.h */,
+				1FD31DED17A084730021D1EB /* shark.h */,
+				1FD31DEE17A084730021D1EB /* simple.h */,
+				1FD31DEF17A084730021D1EB /* skipjack.h */,
+				1FD31DF017A084730021D1EB /* smartptr.h */,
+				1FD31DF117A084730021D1EB /* socketft.h */,
+				1FD31DF217A084730021D1EB /* sosemanuk.h */,
+				1FD31DF317A084730021D1EB /* square.h */,
+				1FD31DF417A084730021D1EB /* StdAfx.h */,
+				1FD31DF517A084730021D1EB /* stdcpp.h */,
+				1FD31DF617A084730021D1EB /* strciphr.h */,
+				1FD31DF717A084730021D1EB /* SymmetricCipher.h */,
+				1FD31DF817A084730021D1EB /* tea.h */,
+				1FD31DF917A084730021D1EB /* tiger.h */,
+				1FD31DFA17A084730021D1EB /* trdlocal.h */,
+				1FD31DFB17A084730021D1EB /* trunhash.h */,
+				1FD31DFC17A084730021D1EB /* ttmac.h */,
+				1FD31DFD17A084730021D1EB /* twofish.h */,
+				1FD31DFE17A084730021D1EB /* validate.h */,
+				1FD31DFF17A084730021D1EB /* vmac.h */,
+				1FD31E0017A084730021D1EB /* wait.h */,
+				1FD31E0117A084730021D1EB /* wake.h */,
+				1FD31E0217A084730021D1EB /* whrlpool.h */,
+				1FD31E0317A084730021D1EB /* winpipes.h */,
+				1FD31E0417A084730021D1EB /* words.h */,
+				1FD31E0517A084730021D1EB /* xtr.h */,
+				1FD31E0617A084730021D1EB /* xtrcrypt.h */,
+				1FD31E0717A084730021D1EB /* zdeflate.h */,
+				1FD31E0817A084730021D1EB /* zinflate.h */,
+				1FD31E0917A084730021D1EB /* zlib.h */,
 				1F58E6D3179F532700CD26D2 /* libcryptocpp.a */,
 				1F259265179F160B003D388B /* encrypt */,
 				1F259272179F161F003D388B /* decrypt */,
@@ -388,6 +662,7 @@
 					"\"$(SRCROOT)/../../../../../Downloads/cryptopp562\"",
 					"\"$(SRCROOT)/cryptopp562\"",
 					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Modern_Crypto-dddufzsnnvrdjhdftjwkpotqjmpc/Build/Products/Debug\"",
+					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -401,6 +676,7 @@
 					"\"$(SRCROOT)/../../../../../Downloads/cryptopp562\"",
 					"\"$(SRCROOT)/cryptopp562\"",
 					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Modern_Crypto-dddufzsnnvrdjhdftjwkpotqjmpc/Build/Products/Debug\"",
+					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -412,6 +688,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
+					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -423,6 +700,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
+					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -434,6 +712,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
+					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -445,6 +724,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
+					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -453,28 +733,40 @@
 		1F25949B179F2F46003D388B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../cryptocpp\"",
 					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Modern_Crypto-dddufzsnnvrdjhdftjwkpotqjmpc/Build/Products/Debug\"",
+					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
+					"\"$(SRCROOT)/../../../../../Downloads/cryptopp562\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
 		};
 		1F25949C179F2F46003D388B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../cryptocpp\"",
 					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Modern_Crypto-dddufzsnnvrdjhdftjwkpotqjmpc/Build/Products/Debug\"",
+					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
+					"\"$(SRCROOT)/../../../../../Downloads/cryptopp562\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Release;
 		};
