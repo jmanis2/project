@@ -17,7 +17,10 @@
 		1F25948F179F29F7003D388B /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F25948D179F29F7003D388B /* StdAfx.cpp */; };
 		1F259497179F2F46003D388B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F259496179F2F46003D388B /* main.cpp */; };
 		1F259499179F2F46003D388B /* ecbtest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F259498179F2F46003D388B /* ecbtest.1 */; };
-		1FD31E1117A090F40021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E0E17A08C880021D1EB /* libcryptopp.a */; };
+		1FD31E9B17A095A50021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
+		1FD31E9C17A095A50021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
+		1FD31E9D17A095A50021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
+		1FD31EA017A095DB0021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,7 +83,6 @@
 		1F259494179F2F46003D388B /* ecbtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ecbtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F259496179F2F46003D388B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1F259498179F2F46003D388B /* ecbtest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ecbtest.1; sourceTree = "<group>"; };
-		1FD31E0E17A08C880021D1EB /* libcryptopp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcryptopp.a; path = ../../../../../Downloads/cryptopp562/libcryptopp.a; sourceTree = "<group>"; };
 		1FD31E1217A093E80021D1EB /* 3way.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 3way.h; sourceTree = "<group>"; };
 		1FD31E1317A093E80021D1EB /* adler32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adler32.h; sourceTree = "<group>"; };
 		1FD31E1417A093E80021D1EB /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		1FD31E9617A093E90021D1EB /* zdeflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zdeflate.h; sourceTree = "<group>"; };
 		1FD31E9717A093E90021D1EB /* zinflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zinflate.h; sourceTree = "<group>"; };
 		1FD31E9817A093E90021D1EB /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
+		1FD31E9A17A095A40021D1EB /* libcryptopp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcryptopp.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD31E9B17A095A50021D1EB /* libcryptopp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD31E9C17A095A50021D1EB /* libcryptopp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +242,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD31E9D17A095A50021D1EB /* libcryptopp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FD31E1117A090F40021D1EB /* libcryptopp.a in Frameworks */,
+				1FD31EA017A095DB0021D1EB /* libcryptopp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +258,70 @@
 
 /* Begin PBXGroup section */
 		1F259246179F0D7C003D388B = {
+			isa = PBXGroup;
+			children = (
+				1FD31E9F17A095AD0021D1EB /* library files */,
+				1FD31E9917A094280021D1EB /* header files */,
+				1F259265179F160B003D388B /* encrypt */,
+				1F259272179F161F003D388B /* decrypt */,
+				1F25927F179F166A003D388B /* keygen */,
+				1F259495179F2F46003D388B /* ecbtest */,
+				1F259250179F0D7C003D388B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1F259250179F0D7C003D388B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F259264179F160B003D388B /* encrypt */,
+				1F259271179F161F003D388B /* decrypt */,
+				1F25927E179F166A003D388B /* keygen */,
+				1F259494179F2F46003D388B /* ecbtest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F259265179F160B003D388B /* encrypt */ = {
+			isa = PBXGroup;
+			children = (
+				1F259266179F160B003D388B /* main.cpp */,
+				1F25948D179F29F7003D388B /* StdAfx.cpp */,
+				1F25948E179F29F7003D388B /* StdAfx.h */,
+				1F259268179F160B003D388B /* encrypt.1 */,
+			);
+			path = encrypt;
+			sourceTree = "<group>";
+		};
+		1F259272179F161F003D388B /* decrypt */ = {
+			isa = PBXGroup;
+			children = (
+				1F259273179F161F003D388B /* main.cpp */,
+				1F259275179F161F003D388B /* decrypt.1 */,
+			);
+			path = decrypt;
+			sourceTree = "<group>";
+		};
+		1F25927F179F166A003D388B /* keygen */ = {
+			isa = PBXGroup;
+			children = (
+				1F259289179F1A5A003D388B /* Timer.h */,
+				1F259280179F166A003D388B /* main.cpp */,
+				1F259287179F1A4B003D388B /* Timer.cpp */,
+				1F259282179F166A003D388B /* keygen.1 */,
+			);
+			path = keygen;
+			sourceTree = "<group>";
+		};
+		1F259495179F2F46003D388B /* ecbtest */ = {
+			isa = PBXGroup;
+			children = (
+				1F259496179F2F46003D388B /* main.cpp */,
+				1F259498179F2F46003D388B /* ecbtest.1 */,
+			);
+			path = ecbtest;
+			sourceTree = "<group>";
+		};
+		1FD31E9917A094280021D1EB /* header files */ = {
 			isa = PBXGroup;
 			children = (
 				1FD31E1217A093E80021D1EB /* 3way.h */,
@@ -389,64 +459,16 @@
 				1FD31E9617A093E90021D1EB /* zdeflate.h */,
 				1FD31E9717A093E90021D1EB /* zinflate.h */,
 				1FD31E9817A093E90021D1EB /* zlib.h */,
-				1FD31E0E17A08C880021D1EB /* libcryptopp.a */,
-				1F259265179F160B003D388B /* encrypt */,
-				1F259272179F161F003D388B /* decrypt */,
-				1F25927F179F166A003D388B /* keygen */,
-				1F259495179F2F46003D388B /* ecbtest */,
-				1F259250179F0D7C003D388B /* Products */,
 			);
+			name = "header files";
 			sourceTree = "<group>";
 		};
-		1F259250179F0D7C003D388B /* Products */ = {
+		1FD31E9F17A095AD0021D1EB /* library files */ = {
 			isa = PBXGroup;
 			children = (
-				1F259264179F160B003D388B /* encrypt */,
-				1F259271179F161F003D388B /* decrypt */,
-				1F25927E179F166A003D388B /* keygen */,
-				1F259494179F2F46003D388B /* ecbtest */,
+				1FD31E9A17A095A40021D1EB /* libcryptopp.a */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1F259265179F160B003D388B /* encrypt */ = {
-			isa = PBXGroup;
-			children = (
-				1F259266179F160B003D388B /* main.cpp */,
-				1F25948D179F29F7003D388B /* StdAfx.cpp */,
-				1F25948E179F29F7003D388B /* StdAfx.h */,
-				1F259268179F160B003D388B /* encrypt.1 */,
-			);
-			path = encrypt;
-			sourceTree = "<group>";
-		};
-		1F259272179F161F003D388B /* decrypt */ = {
-			isa = PBXGroup;
-			children = (
-				1F259273179F161F003D388B /* main.cpp */,
-				1F259275179F161F003D388B /* decrypt.1 */,
-			);
-			path = decrypt;
-			sourceTree = "<group>";
-		};
-		1F25927F179F166A003D388B /* keygen */ = {
-			isa = PBXGroup;
-			children = (
-				1F259289179F1A5A003D388B /* Timer.h */,
-				1F259280179F166A003D388B /* main.cpp */,
-				1F259287179F1A4B003D388B /* Timer.cpp */,
-				1F259282179F166A003D388B /* keygen.1 */,
-			);
-			path = keygen;
-			sourceTree = "<group>";
-		};
-		1F259495179F2F46003D388B /* ecbtest */ = {
-			isa = PBXGroup;
-			children = (
-				1F259496179F2F46003D388B /* main.cpp */,
-				1F259498179F2F46003D388B /* ecbtest.1 */,
-			);
-			path = ecbtest;
+			name = "library files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -657,6 +679,7 @@
 					"\"$(SRCROOT)/cryptopp562\"",
 					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Modern_Crypto-dddufzsnnvrdjhdftjwkpotqjmpc/Build/Products/Debug\"",
 					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -671,6 +694,7 @@
 					"\"$(SRCROOT)/cryptopp562\"",
 					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Modern_Crypto-dddufzsnnvrdjhdftjwkpotqjmpc/Build/Products/Debug\"",
 					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -683,6 +707,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
 					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -695,6 +720,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
 					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -707,6 +733,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
 					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -719,6 +746,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
 					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -739,6 +767,7 @@
 					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Modern_Crypto-dddufzsnnvrdjhdftjwkpotqjmpc/Build/Products/Debug\"",
 					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
 					"\"$(SRCROOT)/../../../../../Downloads/cryptopp562\"",
+					"\"$(SRCROOT)\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -757,6 +786,7 @@
 					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Modern_Crypto-dddufzsnnvrdjhdftjwkpotqjmpc/Build/Products/Debug\"",
 					"\"$(SRCROOT)/../../../../../Documents/GitHubs/cryptopp/cryptopp562\"",
 					"\"$(SRCROOT)/../../../../../Downloads/cryptopp562\"",
+					"\"$(SRCROOT)\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
