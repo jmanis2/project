@@ -9,7 +9,7 @@
 // g++ -g3 -ggdb -O0 -DDEBUG -I/usr/include/cryptopp Driver.cpp -o Driver.exe -lcryptopp -lpthread
 // g++ -g -O2 -DNDEBUG -I/usr/include/cryptopp Driver.cpp -o Driver.exe -lcryptopp -lpthread
 
-#include "osrng.h"
+#include "../../cryptocpp/osrng.h"
 using CryptoPP::AutoSeededRandomPool;
 
 #include <iostream>
@@ -23,22 +23,22 @@ using std::string;
 #include <cstdlib>
 using std::exit;
 
-#include "cryptlib.h"
+#include "../../cryptocpp/cryptlib.h"
 using CryptoPP::Exception;
 
-#include "hex.h"
+#include "../../cryptocpp/hex.h"
 using CryptoPP::HexEncoder;
 using CryptoPP::HexDecoder;
 
-#include "filters.h"
+#include "../../cryptocpp/filters.h"
 using CryptoPP::StringSink;
 using CryptoPP::StringSource;
 using CryptoPP::StreamTransformationFilter;
 
-#include "aes.h"
+#include "../../cryptocpp/aes.h"
 using CryptoPP::AES;
 
-#include "modes.h"
+#include "../../cryptocpp/modes.h"
 using CryptoPP::ECB_Mode;
 
 int main(int argc, char* argv[])
