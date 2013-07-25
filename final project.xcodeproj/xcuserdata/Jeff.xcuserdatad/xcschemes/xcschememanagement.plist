@@ -4,25 +4,40 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>decrypt.xcscheme</key>
+		<key>cbctest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>6</integer>
 		</dict>
-		<key>ecbtest.xcscheme</key>
+		<key>ctrtest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>encrypt.xcscheme</key>
+		<key>decrypt.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>keygen.xcscheme</key>
+		<key>ecbtest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+		<key>encrypt.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>keygen.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>ofbtest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -53,6 +68,21 @@
 			<true/>
 		</dict>
 		<key>1F2598D6179F41BD003D388B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1FCE6F6F17A1055C004C20A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1FCE6F7C17A10569004C20A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1FCE6F8917A10588004C20A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

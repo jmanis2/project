@@ -17,6 +17,15 @@
 		1F25948F179F29F7003D388B /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F25948D179F29F7003D388B /* StdAfx.cpp */; };
 		1F259497179F2F46003D388B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F259496179F2F46003D388B /* main.cpp */; };
 		1F259499179F2F46003D388B /* ecbtest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F259498179F2F46003D388B /* ecbtest.1 */; };
+		1FCE6F7317A1055C004C20A1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE6F7217A1055C004C20A1 /* main.cpp */; };
+		1FCE6F7517A1055D004C20A1 /* ctrtest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1FCE6F7417A1055D004C20A1 /* ctrtest.1 */; };
+		1FCE6F8017A10569004C20A1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE6F7F17A10569004C20A1 /* main.cpp */; };
+		1FCE6F8217A10569004C20A1 /* ofbtest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1FCE6F8117A10569004C20A1 /* ofbtest.1 */; };
+		1FCE6F8D17A10588004C20A1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE6F8C17A10588004C20A1 /* main.cpp */; };
+		1FCE6F8F17A10588004C20A1 /* cbctest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1FCE6F8E17A10588004C20A1 /* cbctest.1 */; };
+		1FCE6F9517A1066F004C20A1 /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
+		1FCE6F9617A10682004C20A1 /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
+		1FCE6F9717A1068F004C20A1 /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
 		1FD31E9B17A095A50021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
 		1FD31E9C17A095A50021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
 		1FD31E9D17A095A50021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
@@ -64,6 +73,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		1FCE6F6E17A1055C004C20A1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				1FCE6F7517A1055D004C20A1 /* ctrtest.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		1FCE6F7B17A10569004C20A1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				1FCE6F8217A10569004C20A1 /* ofbtest.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		1FCE6F8817A10588004C20A1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				1FCE6F8F17A10588004C20A1 /* cbctest.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +122,15 @@
 		1F259494179F2F46003D388B /* ecbtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ecbtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F259496179F2F46003D388B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1F259498179F2F46003D388B /* ecbtest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ecbtest.1; sourceTree = "<group>"; };
+		1FCE6F7017A1055C004C20A1 /* ctrtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ctrtest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FCE6F7217A1055C004C20A1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1FCE6F7417A1055D004C20A1 /* ctrtest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ctrtest.1; sourceTree = "<group>"; };
+		1FCE6F7D17A10569004C20A1 /* ofbtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ofbtest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FCE6F7F17A10569004C20A1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1FCE6F8117A10569004C20A1 /* ofbtest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ofbtest.1; sourceTree = "<group>"; };
+		1FCE6F8A17A10588004C20A1 /* cbctest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cbctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FCE6F8C17A10588004C20A1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1FCE6F8E17A10588004C20A1 /* cbctest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = cbctest.1; sourceTree = "<group>"; };
 		1FD31E1217A093E80021D1EB /* 3way.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 3way.h; sourceTree = "<group>"; };
 		1FD31E1317A093E80021D1EB /* adler32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adler32.h; sourceTree = "<group>"; };
 		1FD31E1417A093E80021D1EB /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
@@ -254,6 +302,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FCE6F6D17A1055C004C20A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FCE6F9617A10682004C20A1 /* libcryptopp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FCE6F7A17A10569004C20A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FCE6F9517A1066F004C20A1 /* libcryptopp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FCE6F8717A10588004C20A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FCE6F9717A1068F004C20A1 /* libcryptopp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -266,6 +338,9 @@
 				1F259272179F161F003D388B /* decrypt */,
 				1F25927F179F166A003D388B /* keygen */,
 				1F259495179F2F46003D388B /* ecbtest */,
+				1FCE6F7117A1055C004C20A1 /* ctrtest */,
+				1FCE6F7E17A10569004C20A1 /* ofbtest */,
+				1FCE6F8B17A10588004C20A1 /* cbctest */,
 				1F259250179F0D7C003D388B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -277,6 +352,9 @@
 				1F259271179F161F003D388B /* decrypt */,
 				1F25927E179F166A003D388B /* keygen */,
 				1F259494179F2F46003D388B /* ecbtest */,
+				1FCE6F7017A1055C004C20A1 /* ctrtest */,
+				1FCE6F7D17A10569004C20A1 /* ofbtest */,
+				1FCE6F8A17A10588004C20A1 /* cbctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,6 +397,33 @@
 				1F259498179F2F46003D388B /* ecbtest.1 */,
 			);
 			path = ecbtest;
+			sourceTree = "<group>";
+		};
+		1FCE6F7117A1055C004C20A1 /* ctrtest */ = {
+			isa = PBXGroup;
+			children = (
+				1FCE6F7217A1055C004C20A1 /* main.cpp */,
+				1FCE6F7417A1055D004C20A1 /* ctrtest.1 */,
+			);
+			path = ctrtest;
+			sourceTree = "<group>";
+		};
+		1FCE6F7E17A10569004C20A1 /* ofbtest */ = {
+			isa = PBXGroup;
+			children = (
+				1FCE6F7F17A10569004C20A1 /* main.cpp */,
+				1FCE6F8117A10569004C20A1 /* ofbtest.1 */,
+			);
+			path = ofbtest;
+			sourceTree = "<group>";
+		};
+		1FCE6F8B17A10588004C20A1 /* cbctest */ = {
+			isa = PBXGroup;
+			children = (
+				1FCE6F8C17A10588004C20A1 /* main.cpp */,
+				1FCE6F8E17A10588004C20A1 /* cbctest.1 */,
+			);
+			path = cbctest;
 			sourceTree = "<group>";
 		};
 		1FD31E9917A094280021D1EB /* header files */ = {
@@ -542,6 +647,57 @@
 			productReference = 1F259494179F2F46003D388B /* ecbtest */;
 			productType = "com.apple.product-type.tool";
 		};
+		1FCE6F6F17A1055C004C20A1 /* ctrtest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FCE6F7817A1055D004C20A1 /* Build configuration list for PBXNativeTarget "ctrtest" */;
+			buildPhases = (
+				1FCE6F6C17A1055C004C20A1 /* Sources */,
+				1FCE6F6D17A1055C004C20A1 /* Frameworks */,
+				1FCE6F6E17A1055C004C20A1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ctrtest;
+			productName = ctrtest;
+			productReference = 1FCE6F7017A1055C004C20A1 /* ctrtest */;
+			productType = "com.apple.product-type.tool";
+		};
+		1FCE6F7C17A10569004C20A1 /* ofbtest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FCE6F8317A10569004C20A1 /* Build configuration list for PBXNativeTarget "ofbtest" */;
+			buildPhases = (
+				1FCE6F7917A10569004C20A1 /* Sources */,
+				1FCE6F7A17A10569004C20A1 /* Frameworks */,
+				1FCE6F7B17A10569004C20A1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ofbtest;
+			productName = ofbtest;
+			productReference = 1FCE6F7D17A10569004C20A1 /* ofbtest */;
+			productType = "com.apple.product-type.tool";
+		};
+		1FCE6F8917A10588004C20A1 /* cbctest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FCE6F9017A10588004C20A1 /* Build configuration list for PBXNativeTarget "cbctest" */;
+			buildPhases = (
+				1FCE6F8617A10588004C20A1 /* Sources */,
+				1FCE6F8717A10588004C20A1 /* Frameworks */,
+				1FCE6F8817A10588004C20A1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cbctest;
+			productName = cbctest;
+			productReference = 1FCE6F8A17A10588004C20A1 /* cbctest */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -567,6 +723,9 @@
 				1F259270179F161F003D388B /* decrypt */,
 				1F25927D179F166A003D388B /* keygen */,
 				1F259493179F2F46003D388B /* ecbtest */,
+				1FCE6F6F17A1055C004C20A1 /* ctrtest */,
+				1FCE6F7C17A10569004C20A1 /* ofbtest */,
+				1FCE6F8917A10588004C20A1 /* cbctest */,
 			);
 		};
 /* End PBXProject section */
@@ -603,6 +762,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F259497179F2F46003D388B /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FCE6F6C17A1055C004C20A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FCE6F7317A1055C004C20A1 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FCE6F7917A10569004C20A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FCE6F8017A10569004C20A1 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FCE6F8617A10588004C20A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FCE6F8D17A10588004C20A1 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +856,7 @@
 		1F25926B179F160B003D388B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../../Downloads/cryptopp562\"",
@@ -688,6 +872,7 @@
 		1F25926C179F160B003D388B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../../Downloads/cryptopp562\"",
@@ -703,6 +888,7 @@
 		1F259278179F161F003D388B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
@@ -716,6 +902,7 @@
 		1F259279179F161F003D388B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
@@ -729,6 +916,7 @@
 		1F259285179F166A003D388B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
@@ -742,6 +930,7 @@
 		1F259286179F166A003D388B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/cryptopp562\"",
@@ -794,6 +983,78 @@
 			};
 			name = Release;
 		};
+		1FCE6F7617A1055D004C20A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1FCE6F7717A1055D004C20A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1FCE6F8417A10569004C20A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1FCE6F8517A10569004C20A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1FCE6F9117A10588004C20A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1FCE6F9217A10588004C20A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -841,6 +1102,30 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		1FCE6F7817A1055D004C20A1 /* Build configuration list for PBXNativeTarget "ctrtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FCE6F7617A1055D004C20A1 /* Debug */,
+				1FCE6F7717A1055D004C20A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1FCE6F8317A10569004C20A1 /* Build configuration list for PBXNativeTarget "ofbtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FCE6F8417A10569004C20A1 /* Debug */,
+				1FCE6F8517A10569004C20A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1FCE6F9017A10588004C20A1 /* Build configuration list for PBXNativeTarget "cbctest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FCE6F9117A10588004C20A1 /* Debug */,
+				1FCE6F9217A10588004C20A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

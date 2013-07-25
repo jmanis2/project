@@ -22,8 +22,10 @@
 
 int main(int argc, const char * argv[])
 {
-    {
-        // Key and IV setup
+        // THIS CODE IS ALL CRAP.  I DONT REMEMBER WHERE I WAS SOPYING IT FROM ANYMORE
+        // DELETE DELETE DELETE
+        //
+ /*       // Key and IV setup
         byte key[ CryptoPP::CIPHER::DEFAULT_KEYLENGTH ],
         iv[ CryptoPP::CIPHER::BLOCKSIZE ];
         
@@ -46,6 +48,6 @@ int main(int argc, const char * argv[])
                                                                         new CryptoPP::StringSink( CipherText )
                                                                         ) // StreamTransformationFilter
                                ); // StringSource
-        return 0;
+   */     return 0;
 }
 
