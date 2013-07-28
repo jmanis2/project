@@ -10,32 +10,52 @@
 #include <fstream>
 #include <cmath>
 #include <ctime>
-#include "Timer.h"
-#include "des.h"
+
+#include "filters.h"
+using CryptoPP::StringSink;
+using CryptoPP::StringSource;
+using CryptoPP::StreamTransformationFilter;
+
+
+#include "aes.h"
+using CryptoPP::AES;
+
+#include "osrng.h"
+using CryptoPP::AutoSeededRandomPool;
+
+#include "hex.h"
+using CryptoPP::HexEncoder;
+using CryptoPP::HexDecoder;
 
 using namespace std;
 
+
+string encoded;
+
 int main(int argc, char *argv[])
 {
-    //double start, stop, tick1, tick2;
+    // Initiate the pseudo random pool
+    AutoSeededRandomPool prng;
     
-    Timer t;
+    // Set the keylength to the AES default and generate a key
+	byte key[AES::DEFAULT_KEYLENGTH];
+	prng.GenerateBlock(key, sizeof(key));
+    
+    // Encode the key into HEX for printing and saving
+	encoded.clear();
+	StringSource(key, sizeof(key), true,
+                 new HexEncoder(
+                                new StringSink(encoded)
+                                ) // HexEncoder
+                 ); // StringSource
+	cout << "key: " << encoded << endl;
+
+    
     ofstream myfile;
-    
-    // start timer
-    t.start();
-    
-    
-    myfile.open ("example.txt");
-    myfile << "Writing this to a file.\n";
+        
+    myfile.open ("key.hex");
+    myfile << encoded << endl;
     myfile.close();
-    
-    t.stop();
-    
-    cout << CLOCKS_PER_SEC << endl;
-    cout << CLK_TCK << endl;
-    cout << clock()/CLOCKS_PER_SEC << endl;
-    cout << t.getElapsedTimeInMilliSec();
-    
+            
     return 0;
 }
