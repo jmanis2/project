@@ -39,6 +39,10 @@ using CryptoPP::AES;
 
 #include "modes.h"
 using CryptoPP::ECB_Mode;
+using CryptoPP::OFB_Mode;
+using CryptoPP::CBC_Mode;
+using CryptoPP::CTR_Mode;
+
 
 #include <cmath>
 #include "Timer.h"
@@ -59,9 +63,13 @@ int main(int argc, const char * argv[])
 	byte key[AES::DEFAULT_KEYLENGTH];
 	prng.GenerateBlock(key, sizeof(key));
     
+    // Create IV based on AES block size
+    byte iv[AES::BLOCKSIZE];
+    prng.GenerateBlock(iv, sizeof(iv));
+
+    
     // Set up a test string to encrypt and variables to hold the versions.  Will replace this with the file read later
-	string plain = "ECB Mode Test";
-	string cipher, encoded, recovered;
+	string plain, cipher, encoded, recovered;
     
     // Set up the stdout header
     cout << "Mode   |   Encrypt Time (ms)" << endl;
@@ -70,6 +78,7 @@ int main(int argc, const char * argv[])
     // Perform Electronic Code Book (ECB) encryption and record time
 
     // Perform file IO here
+    plain = "ECB Mode Test";
     
     // start timer
     t.start();
@@ -77,7 +86,7 @@ int main(int argc, const char * argv[])
     // perform encryption here
     try
 	{
-		cout << "plain text: " << plain << endl;
+		// cout << "plain text: " << plain << endl;  //DEBUG
         
 		ECB_Mode< AES >::Encryption e;
 		e.SetKey(key, sizeof(key));
@@ -98,52 +107,98 @@ int main(int argc, const char * argv[])
 	}
     
     t.stop();
-    cout << "ECB    |   " << t.getElapsedTimeInMilliSec();
+    cout << "ECB    |   " << t.getElapsedTimeInMilliSec() << endl;
     
     ///////////////////////////////////////////////////////////
     // Perform Cipher Block Chaining encryption and record time
 
     // Perform file IO here
-    
+    plain = "CBC Mode Test";
+
     // start timer
     t.start();
     
     // perform encryption here
-    
+    try
+	{
+		//cout << "plain text: " << plain << endl;  //DEBUG
+        
+		CBC_Mode< AES >::Encryption e;
+		e.SetKeyWithIV(key, sizeof(key), iv);
+        
+		// The StreamTransformationFilter removes
+		//  padding as required.
+		StringSource s(plain, true,
+                       new StreamTransformationFilter(e,
+                                                      new StringSink(cipher)
+                                                      ) // StreamTransformationFilter
+                       ); // StringSource
+        	}
+	catch(const CryptoPP::Exception& e)
+	{
+		cerr << e.what() << endl;
+		exit(1);
+	}
 
     // Stop the timer
     t.stop();
     
     // Perform output to stdout of performance stats
-    cout << t.getElapsedTimeInSec();
+    cout << "CBC    |   " << t.getElapsedTimeInSec() << endl;
 
 
     ///////////////////////////////////////////////////////////
     // Perform Cipher Feedback encryption and record time
 
     // Perform file IO here
-    
+    plain = "CFB Mode Test";
+
     // start timer
     t.start();
     
     // perform encryption here
     
+    
+    //Stop timer
     t.stop();
-    cout << t.getElapsedTimeInSec();
+    cout << "CFB    |   " << t.getElapsedTimeInSec() << endl;
     
     
     ///////////////////////////////////////////////////////////
     // Perform Output Feedback encryption and record time
 
+    
     // Perform file IO here
+     plain = "OFB Mode Test";
     
     // start timer
     t.start();
     
     // perform encryption here
-    
+    try
+    {
+        // cout << "plain text: " << plain << endl;  //DEBUG
+        
+        OFB_Mode< AES >::Encryption e;
+        e.SetKeyWithIV(key, sizeof(key), iv);
+        
+        // OFB mode must not use padding. Specifying
+        //  a scheme will result in an exception
+        StringSource(plain, true,
+                     new StreamTransformationFilter(e,
+                                                    new StringSink(cipher)
+                                                    ) // StreamTransformationFilter
+                     ); // StringSource
+    }
+    catch(const CryptoPP::Exception& e)
+    {
+        cerr << e.what() << endl;
+        exit(1);
+    }
+
+    //Stop timer
     t.stop();
-    cout << t.getElapsedTimeInSec();
+    cout << "OFB    |   " << t.getElapsedTimeInSec() << endl;
 
     
     
@@ -151,14 +206,37 @@ int main(int argc, const char * argv[])
     // Perform Counter  encryption and record time
 
     // Perform file IO here
+    plain = "CTR Mode Test";
     
     // start timer
     t.start();
     
     // perform encryption here
-    
+    try
+	{
+		// cout << "plain text: " << plain << endl;  //DEBUG
+        
+		CTR_Mode< AES >::Encryption e;
+		e.SetKeyWithIV(key, sizeof(key), iv);
+        
+		// The StreamTransformationFilter adds padding
+		//  as required. ECB and CBC Mode must be padded
+		//  to the block size of the cipher.
+		StringSource(plain, true,
+                     new StreamTransformationFilter(e,
+                                                    new StringSink(cipher)
+                                                    ) // StreamTransformationFilter
+                     ); // StringSource
+	}
+	catch(const CryptoPP::Exception& e)
+	{
+		cerr << e.what() << endl;
+		exit(1);
+	}
+
+    //Stop timer
     t.stop();
-    cout << t.getElapsedTimeInSec();
+    cout << "CTR    |   " << t.getElapsedTimeInSec() << endl;
     
 
     
