@@ -239,9 +239,6 @@ int main(int argc, const char * argv[])
     cout << "CTR    |   " << t.getElapsedTimeInSec() << endl;
     
 
-    
-    
-
     return 0;
 }
 
