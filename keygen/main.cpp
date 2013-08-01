@@ -11,6 +11,10 @@
 #include <cmath>
 #include <ctime>
 
+#include "files.h"
+using CryptoPP::FileSink;
+
+
 #include "filters.h"
 using CryptoPP::StringSink;
 using CryptoPP::StringSource;
@@ -19,7 +23,7 @@ using CryptoPP::StreamTransformationFilter;
 
 #include "aes.h"
 using CryptoPP::AES;
-
+using CryptoPP::SecByteBlock;
 #include "osrng.h"
 using CryptoPP::AutoSeededRandomPool;
 
@@ -36,11 +40,11 @@ int main(int argc, char *argv[])
 {
     // Initiate the pseudo random pool
     AutoSeededRandomPool prng;
-    
-    // Set the keylength to the AES default and generate a key
-	byte key[AES::DEFAULT_KEYLENGTH];
-	prng.GenerateBlock(key, sizeof(key));
-    
+   
+    // Generate a random key
+    SecByteBlock key(AES::DEFAULT_KEYLENGTH);
+    prng.GenerateBlock( key, key.size() );
+     
     // Encode the key into HEX for printing and saving
 	encoded.clear();
 	StringSource(key, sizeof(key), true,
@@ -48,6 +52,12 @@ int main(int argc, char *argv[])
                                 new StringSink(encoded)
                                 ) // HexEncoder
                  ); // StringSource
+    
+   // Test save binary Key
+   StringSource(key, sizeof(key), true,
+                      new FileSink("key.bin", true)
+                 ); // StringSource
+    
 	cout << "key: " << encoded << endl;
 
     
