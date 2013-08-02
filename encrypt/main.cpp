@@ -62,20 +62,33 @@ int main(int argc, const char * argv[])
     // Initiate the pseudo random pool
     AutoSeededRandomPool prng;
     
-    // Set up read buffer
-    //cout << AES::DEFAULT_KEYLENGTH;
+    //cout << AES::DEFAULT_KEYLENGTH;  //DEBUG
     
     
     // Set up a test string to encrypt and variables to hold the versions.  Will replace this with the file read later
-	string plain, cipher, encoded, recovered;
     char *ciphertextfilename, *plaintextfilename,  *plaintextfilename2;
     
+    string encoded, key_str, key_hex;
     plaintextfilename="plaintext.txt";
     //plaintextfilename2="plaintext2.txt";
     ciphertextfilename="ciphertext.txt";
 
     
     // Read Key into memory here
+    //This reads the hex file and decodes it into a string.  Need to figure out how to save into a byte array
+    FileSource kf("key.hex", true,
+                  new CryptoPP::HexDecoder(                                                                                    new StringSink(key_str)
+                    ) // HexDecoder
+                  ); // FileSource
+    
+    // This reads the hex file and saves it into a string
+    FileSource kf2("key.hex", true,
+                  new StringSink(key_hex)
+                  ); // FileSource
+
+    cout << "key_str: " << key_str << endl;  //DEBUG
+    cout << "key_hex: " << key_hex << endl;  //DEBUG
+    
     
     // For now I'm just generating the key in the enc prog for testing.
     // Set the keylength to the AES default and generate a key
@@ -84,7 +97,7 @@ int main(int argc, const char * argv[])
 	prng.GenerateBlock(key, sizeof(key));
 
     
-    // Encode key into hex for printing
+    // Encode key into hex for printing  //DEBUG
     encoded.clear();
     StringSource(key, sizeof(key), true,
                  new HexEncoder(
@@ -93,7 +106,7 @@ int main(int argc, const char * argv[])
                  ); // StringSource
     
     cout << "key: " << encoded << endl;
-   // cout << "key: " << key << endl;
+   // cout << "key: " << key << endl;  //DEBUG
 
     
     // Create IV based on AES block size
@@ -101,7 +114,7 @@ int main(int argc, const char * argv[])
     prng.GenerateBlock(iv, sizeof(iv));
     
     
-    //Encode IV into hex for printing
+    //Encode IV into hex for printing  //DEBUG
     encoded.clear();
     StringSource(iv, sizeof(iv), true,
                  new HexEncoder(
@@ -109,7 +122,7 @@ int main(int argc, const char * argv[])
                                 ) // HexEncoder
                  ); // StringSource
     
-    cout << "iv: " << encoded << endl;
+    cout << "iv: " << encoded << endl;  //DEBUG
 
 
     plaintextfilename="plaintext.txt";
@@ -121,41 +134,18 @@ int main(int argc, const char * argv[])
     
     ///////////////////////////////////////////////////////////
     // Perform Electronic Code Book (ECB) encryption and record time
+    ///////////////////////////////////////////////////////////
 
-    // Perform file IO here
-    plain = "ECB Mode Test";
-    
     // start timer
     t.start();
     
     // perform encryption here
     try
 	{
-		 //cout << "plain text: " << plain << endl;  //DEBUG
         
 		ECB_Mode< AES >::Encryption e;
 		e.SetKey(key, sizeof(key));
 
-        /*
-        
-		// The StreamTransformationFilter adds padding
-		//  as required. ECB and CBC Mode must be padded
-		//  to the block size of the cipher.
-		StringSource(plain, true,
-                     new StreamTransformationFilter(e,
-                                                    new StringSink(cipher)
-                                                    ) // StreamTransformationFilter
-                     ); // StringSource
-        
-        encoded.clear();
-        StringSource(cipher, true,
-                     new HexEncoder(
-                                    new StringSink(encoded)
-                                    ) // HexEncoder
-                     ); // StringSource
-        cout << "cipher text: " << encoded << endl;
-        */
-        
         // The StreamTransformationFilter adds padding
 		//  as required. ECB and CBC Mode must be padded
 		//  to the block size of the cipher.
@@ -182,14 +172,6 @@ int main(int argc, const char * argv[])
         
 		// The StreamTransformationFilter removes
 		//  padding as required.
-		StringSource s(cipher, true,
-                       new StreamTransformationFilter(d,
-                                                      new StringSink(recovered)
-                                                      ) // StreamTransformationFilter
-                       ); // StringSource
-        
-		cout << "recovered text: " << recovered << endl;
-
         FileSource ct(ciphertextfilename , true,
                        new StreamTransformationFilter(d,
                                                       new FileSink(plaintextfilename2)
@@ -212,9 +194,7 @@ int main(int argc, const char * argv[])
     
     ///////////////////////////////////////////////////////////
     // Perform Cipher Block Chaining encryption and record time
-
-    // Perform file IO here
-    plain = "CBC Mode Test";
+    ///////////////////////////////////////////////////////////
 
     // start timer
     t.start();
@@ -226,17 +206,7 @@ int main(int argc, const char * argv[])
         
 		CBC_Mode< AES >::Encryption e;
 		e.SetKeyWithIV(key, sizeof(key), iv);
-       
-        /*
-		// The StreamTransformationFilter removes
-		//  padding as required.
-		StringSource s(plain, true,
-                       new StreamTransformationFilter(e,
-                                                      new StringSink(cipher)
-                                                      ) // StreamTransformationFilter
-                       ); // StringSource
-         */
-         
+        
         // The StreamTransformationFilter adds padding
 		//  as required. ECB and CBC Mode must be padded
 		//  to the block size of the cipher.
@@ -261,11 +231,10 @@ int main(int argc, const char * argv[])
     // Perform output to stdout of performance stats
     cout << t.getElapsedTimeInSec() << "    ";
 
+    
     ///////////////////////////////////////////////////////////
     // Perform Output Feedback encryption and record time
-    
-    // Perform file IO here
-     plain = "OFB Mode Test";
+    ///////////////////////////////////////////////////////////
     
     // start timer
     t.start();
@@ -273,21 +242,9 @@ int main(int argc, const char * argv[])
     // perform encryption here
     try
     {
-        // cout << "plain text: " << plain << endl;  //DEBUG
         
         OFB_Mode< AES >::Encryption e;
         e.SetKeyWithIV(key, sizeof(key), iv);
-        
-        /*
-        // OFB mode must not use padding. Specifying
-        //  a scheme will result in an exception
-        StringSource(plain, true,
-                     new StreamTransformationFilter(e,
-                                                    new StringSink(cipher)
-                                                    ) // StreamTransformationFilter
-                     ); // StringSource
-
-        */
         
         // OFB mode must not use padding. Specifying
         //  a scheme will result in an exception
@@ -312,9 +269,7 @@ int main(int argc, const char * argv[])
 
     ///////////////////////////////////////////////////////////
     // Perform Cipher Feedback encryption and record time
-    
-    // Perform file IO here
-    plain = "CFB Mode Test";
+    ///////////////////////////////////////////////////////////
     
     // start timer
     t.start();
@@ -328,14 +283,6 @@ int main(int argc, const char * argv[])
         
 		// CFB mode must not use padding. Specifying
 		//  a scheme will result in an exception
-	/*
-        StringSource(plain, true,
-                     new StreamTransformationFilter(e,
-                                                    new StringSink(cipher)
-                                                    ) // StreamTransformationFilter
-                     ); // StringSource
-        
-     */   
         FileSource pt(plaintextfilename, true,
                       new StreamTransformationFilter(e,
                                                      new FileSink("ciphertextcfb.txt", true /*binary*/)
@@ -359,33 +306,20 @@ int main(int argc, const char * argv[])
        
     ///////////////////////////////////////////////////////////
     // Perform Counter  encryption and record time
+    ///////////////////////////////////////////////////////////
 
-    // Perform file IO here
-    plain = "CTR Mode Test";
-    
     // start timer
     t.start();
     
     // perform encryption here
     try
-	{
-		// cout << "plain text: " << plain << endl;  //DEBUG
-        
+	{        
 		CTR_Mode< AES >::Encryption e;
 		e.SetKeyWithIV(key, sizeof(key), iv);
         
 		// The StreamTransformationFilter adds padding
 		//  as required. ECB and CBC Mode must be padded
 		//  to the block size of the cipher.
-        
-        /*
-		StringSource(plain, true,
-                     new StreamTransformationFilter(e,
-                                                    new StringSink(cipher)
-                                                    ) // StreamTransformationFilter
-                     ); // StringSource
-        
-        */
         FileSource pt(plaintextfilename, true,
                       new StreamTransformationFilter(e,
                                                      new FileSink("ciphertextctr.txt", true /*binary*/)

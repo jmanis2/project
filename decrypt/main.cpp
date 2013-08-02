@@ -115,7 +115,7 @@ int main(int argc, const char * argv[])
         
         FileSource ct("ciphertextecb.txt", true,
                       new StreamTransformationFilter(d,
-                                                     new FileSink("decodetextecb.txt", true /*binary*/)
+                                                     new FileSink("decodetextecb.txt", false)
                                                      ) // StreamTransformationFilter
                       ); // FileSource
 
