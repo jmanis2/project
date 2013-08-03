@@ -66,12 +66,11 @@ int main(int argc, const char * argv[])
     // Create IV variable
     //byte iv[AES::BLOCKSIZE];
 
-    
     // Other variables that can be deleted in final version
     string plain = "CTR Mode Test";
 	string cipher, decoded, recovered;
-    string encodedKey = "57B5C1BCAA0B2E832816934AA089A5D10100000000000000";
-    string encodedIv = "D4BB8B6827E7A3612BEE84F7CCCB2C2B";
+    string encodedKey = "0FF0B343D7B26AC7A4BE5B5325B32756C2B724AA84B676A0";
+    string encodedIv = "ACBADF04A4747BDC0CA66BA753B4716B";
     string key, iv;
     
     StringSource ssk(encodedKey, true /*pumpAll*/,
@@ -85,13 +84,15 @@ int main(int argc, const char * argv[])
                                     new StringSink(iv)
                                     ) // HexDecoder
                      ); // StringSource
-    
+
+    /* DEBUG
     cout << "key: " << encodedKey << endl;
     cout << "iv: " << encodedIv << endl;
     
     cout << "key: " << key << endl;
     cout << "iv: " << iv << endl;
-    
+    */
+     
     // Set up the stdout header
     cout << "ECB    |   CBC     |   OFB     |   CFB     |   CTR     |   Decrypt Time (ms)" << endl;
     
@@ -118,7 +119,6 @@ int main(int argc, const char * argv[])
                                                      new FileSink("decodetextecb.txt", false)
                                                      ) // StreamTransformationFilter
                       ); // FileSource
-
 	}
 	catch(const CryptoPP::Exception& e)
 	{
