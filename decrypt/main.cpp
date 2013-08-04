@@ -61,18 +61,48 @@ int main(int argc, const char * argv[])
     Timer t;
     
     // Create key variable
-	//byte key[AES::DEFAULT_KEYLENGTH];
-
+	byte key[AES::DEFAULT_KEYLENGTH];
+    
     // Create IV variable
-    //byte iv[AES::BLOCKSIZE];
-
+    byte iv[AES::BLOCKSIZE];
+    
     // Other variables that can be deleted in final version
     string plain = "CTR Mode Test";
 	string cipher, decoded, recovered;
     string encodedKey = "0FF0B343D7B26AC7A4BE5B5325B32756C2B724AA84B676A0";
     string encodedIv = "ACBADF04A4747BDC0CA66BA753B4716B";
     string key, iv;
+
     
+    // Parse the command line options
+    while ((opt = getopt (argc, argv, "bhk:m:")) != -1)
+        switch (opt)
+    {
+        case 'b':
+            binary_file = 1;
+            break;
+        case 'k':
+            key_file = optarg;
+            break;
+        case 'h':
+            cout << "usage: decrypt [-b] [-k key_file] [-m mode (CBC, OFB, CFB, ECB, CTR, ALL)]" << endl;
+            return 1;
+        case '?':
+            if (optopt == 'k')
+                fprintf (stderr, "Option -%c requires a key length arguement (in bytes).\n", optopt);
+            else if (isprint (optopt)) {
+                fprintf (stderr, "Unknown option `-%c'.\n", optopt);
+                cout << "usage: decrypt [-b] [-k key_file] [-m mode (CBC, OFB, CFB, ECB, CTR, ALL)]" << endl;
+            } else
+                fprintf (stderr,
+                         "Unknown option character `\\x%x'.\n",
+                         optopt);
+            return 1;
+        default:
+            abort ();
+    }
+ 
+    // Read in the key file and determine the key_size
     StringSource ssk(encodedKey, true /*pumpAll*/,
                      new HexDecoder(
                                     new StringSink(key)
