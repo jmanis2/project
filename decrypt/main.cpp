@@ -66,26 +66,21 @@ int main(int argc, const char * argv[])
     // Set up default options
     string plaintext_file = "plaintext.txt";        // Set default plain text filename
     string ciphertext_file = "ciphertext.txt";      // Set default cipher text filename
-    string key_file = "key.txt";                      // Set default key filename
-    string mode = "ALL";
+    string key_file = "key.txt";                    // Set default key filename
+    string mode = "ALL";                            // Set default mode to ALL (helps with debuging)
+    int key_size=AES::DEFAULT_KEYLENGTH;            // Set default key size
     bool binaryfile_bool = false;                   // By default create non-boolean files
-    bool verbose_bool = true;                      // By default do not be verbose
-    int performance_loop = 20;
-    
-    // Create key variable
-    int key_size=AES::DEFAULT_KEYLENGTH;
-    byte key[key_size];
-    
-    byte iv[AES::BLOCKSIZE];
+    bool verbose_bool = true;                       // By default do not be verbose
+    int performance_loop = 20;                      // Set default number of loops
+    int iv_size = AES::BLOCKSIZE;                   // Set default IV size to AES::blocksize
     
     // Other variables that can be deleted in final version
     string encodedKey, encodedIv;
-    
 
     // Parse the command line options
     int opt;  // Holds the current option being parsed for getopt
     
-    while ((opt = getopt (argc, (char **)argv, "bhk::lp::m:c::")) != -1)
+    while ((opt = getopt (argc, (char **)argv, "bhk::l:p::m:c::")) != -1)
         switch (opt)
     {
         case 'b':
@@ -130,12 +125,17 @@ int main(int argc, const char * argv[])
             abort ();
     }
     
-    // Read in the key file and determine the key_size
     
-    // This reads the key into an array using array
+    // Create key variable
+    byte key[key_size];
+    
+    // Create iv variable
+    byte iv[iv_size];
+    
+    // Read the key into an array using arraysink
     FileSource kf(key_file.c_str(), true,
                   new HexDecoder(new ArraySink(key, key_size)), binaryfile_bool); // FileSource
-        
+
     if (verbose_bool) {
     ArraySource ssk(key, key_size, true /*pumpAll*/,
                      new HexEncoder(
@@ -152,7 +152,6 @@ int main(int argc, const char * argv[])
         cout << "key: " << encodedKey << endl;
         cout << "iv: " << encodedIv << endl;
     }
-    
     
     // Set up the stdout header
     if (mode=="ALL") {

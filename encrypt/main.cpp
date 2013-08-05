@@ -73,20 +73,18 @@ int main(int argc, const char * argv[])
     // Set up default options
     string plaintext_file = "plaintext.txt";        // Set default plain text filename
     string ciphertext_file = "ciphertext.txt";      // Set default cipher text filename
-    string key_file = "key.txt";                      // Set default key filename
-    string mode = "ALL";
+    string key_file = "key.txt";                    // Set default key filename
+    string mode = "ALL";                            // Set default mode to ALL helps with debuging
+    int key_size=AES::DEFAULT_KEYLENGTH;            // Set default key length
     bool binaryfile_bool = false;                   // By default create non-boolean files
-    bool verbose_bool = false;                      // By default do not be verbose
-    int performance_loop = 20;
-    
-    // Create key variable
-    int key_size=AES::DEFAULT_KEYLENGTH;
-    byte key[key_size];
+    bool verbose_bool = true;                       // By default do not be verbose
+    int performance_loop = 20;                      // Set default number of loops
+    int iv_size = AES::BLOCKSIZE;                   // Set default iv_size to AES::BLOCKSIZE
     
     // Parse the command line options
     int opt;  // Holds the current option being parsed for getopt
     
-    while ((opt = getopt (argc, (char **)argv, "bhk::lp::m:c::")) != -1)
+    while ((opt = getopt (argc, (char **)argv, "bhk::l:p::m:c::")) != -1)
         switch (opt)
     {
         case 'b':
@@ -131,6 +129,12 @@ int main(int argc, const char * argv[])
             abort ();
     }
     
+    // Create key variable
+    byte key[key_size];
+    
+    // Create IV variable
+    byte iv[iv_size];
+    
     // Read Key file and save into byte array
     if (binaryfile_bool) {
         key_file="key.bin";
@@ -145,24 +149,22 @@ int main(int argc, const char * argv[])
     // Determin key_size and resize here
     //key2.resize();
     //cout << "key2: " << key2 << endl;  //DEBUG
-
-    // Encode key into hex for printing //DEBUG
-    encoded.clear();
-    StringSource(key, key_size, true,
-                 new HexEncoder(
-                                new StringSink(encoded)
-                                ) // HexEncoder
-                 ); // StringSource
     
-    cout << "key: " << encoded << endl;
-    
-    // Create IV based on AES block size
-    byte iv[AES::BLOCKSIZE];
+    // Generate random IV
     prng.GenerateBlock(iv, sizeof(iv));
     
-    
-    //Encode IV into hex for printing  //DEBUG
-    if (true) {
+    if (verbose_bool){
+        // Encode key into hex for printing //DEBUG
+        encoded.clear();
+        StringSource(key, key_size, true,
+                     new HexEncoder(
+                                    new StringSink(encoded)
+                                    ) // HexEncoder
+                     ); // StringSource
+        
+        cout << "key: " << encoded << endl;
+        
+        //Encode IV into hex for printing  //DEBUG
         encoded.clear();
         StringSource(iv, sizeof(iv), true,
                      new HexEncoder(
