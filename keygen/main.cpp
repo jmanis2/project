@@ -35,17 +35,15 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    // Set default values
     int key_size = AES::DEFAULT_KEYLENGTH;
-    int binary_file=0, opt;
-    string key_file;
+    string key_file= "key.txt";
+    bool verbose_bool = true;
     
     // Parse the command line options
-    while ((opt = getopt (argc, argv, "bhk:")) != -1)
+    while ((opt = getopt (argc, argv, "hk:v")) != -1)
         switch (opt)
     {
-        case 'b':
-            binary_file = 1;
-            break;
         case 'k':
             key_size = atoi(optarg);
             break;
@@ -75,29 +73,17 @@ int main(int argc, char *argv[])
     prng.GenerateBlock( key, key.size() );
     
     ///* DEBUG
-    cout << "bflag: " << binary_file << " keysize: " << key_size << endl;
-    cout << "sizeof(key): " << sizeof(key) << " key.size(): " << key.size() << endl;
-    
-    
-    // Save the file in the appropriate format
-    if (!binary_file)  {
-        // Save a non-binary file
-        key_file = "key.txt";
-        StringSource(key, key.size(), true,
-                     new HexEncoder(
-                                    new FileSink(key_file.c_str(), false)
-                                    ) // HexEncoder
-                     );// StringSource
-        
-    } else {
-        // Save a binary key file
-        key_file = "key.bin";
-        StringSource(key, key.size(), true,
-                     new CryptoPP::HexEncoder(
-                                              new FileSink(key_file.c_str(), true)
-                                              ) //HexEncoder
-                     ); // StringSource
+    if (verbose_bool) {
+        cout << "sizeof(key): " << sizeof(key) << " key.size(): " << key.size() << endl;
     }
+    
+    // Save a non-binary file
+    key_file = "key.txt";
+    StringSource(key, key.size(), true,
+                 new HexEncoder(
+                                new FileSink(key_file.c_str(), false /* non-binary */ )
+                                ) // HexEncoder
+                 );// StringSource
     
     return 0;
 }
