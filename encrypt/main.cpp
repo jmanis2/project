@@ -11,6 +11,8 @@
 #include <ctime>
 #include <ctype.h>
 #include <unistd.h>
+using namespace std;
+
 
 #include "osrng.h"
 using CryptoPP::AutoSeededRandomPool;
@@ -55,8 +57,6 @@ using CryptoPP::CFB_Mode;
 using CryptoPP::CTR_Mode;
 
 #include "Timer.h"
-
-using namespace std;
 
 int main(int argc, const char * argv[])
 {
