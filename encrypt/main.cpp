@@ -135,16 +135,12 @@ int main(int argc, const char * argv[])
     // Create IV variable
     byte iv[iv_size];
     
-    // Read Key file and save into byte array
-    if (binaryfile_bool) {
-        key_file="key.bin";
-    } else {
-        key_file="key.txt";
-    }
-    
-    // This reads the key into an array using array
+    // Read the key into an array using arraysink
     FileSource kf(key_file.c_str(), true,
-                  new HexDecoder(new ArraySink(key, key_size)), binaryfile_bool); // FileSource
+                  new HexDecoder(
+                                 new ArraySink(key, key_size)
+                                 ) //HexDecoder
+                  , false /* non-binary */); // FileSource
     
     // Generate random IV
     prng.GenerateBlock(iv, sizeof(iv));
@@ -206,10 +202,11 @@ int main(int argc, const char * argv[])
                 FileSource pt(plaintext_file.c_str(), true,
                               new StreamTransformationFilter(e,
                                                              new HexEncoder (
-                                                                             new FileSink(ciphertext_file.c_str(), binaryfile_bool)
+                                                                             new FileSink(ciphertext_file.c_str(), false /* non-binary */)
                                                                              ) // HexEncoder
                                                              ) // StreamTransformationFilter
                               , binaryfile_bool); // FileSource
+                
                 // Stop the timer and output the result to stdout
                 t.stop();
                 cout << t.getElapsedTimeInMilliSec() << "   ";
@@ -242,10 +239,10 @@ int main(int argc, const char * argv[])
                 FileSource ct(ciphertext_file.c_str() , true,
                               new HexDecoder (
                                               new StreamTransformationFilter(d,
-                                                                             new FileSink(plaintext_file2.c_str(), false)
+                                                                             new FileSink(plaintext_file2.c_str(), binaryfile_bool)
                                                                              ) // StringTransform
                                               ) // HexDecoder
-                              , binaryfile_bool); // FileSource
+                              , false /* non-binary */); // FileSource
             }
             catch(const CryptoPP::Exception& e)
             {
@@ -283,7 +280,7 @@ int main(int argc, const char * argv[])
                 FileSource pt(plaintext_file.c_str(), true,
                               new StreamTransformationFilter(e,
                                                              new HexEncoder (
-                                                                             new FileSink(ciphertext_file.c_str(), binaryfile_bool)
+                                                                             new FileSink(ciphertext_file.c_str(), false /* non-binary */)
                                                                              ) // HexEncoder
                                                              ) // StreamTransformation
                               , binaryfile_bool); // FileSource
@@ -326,8 +323,8 @@ int main(int argc, const char * argv[])
                 //  a scheme will result in an exception
                 FileSource pt(plaintext_file.c_str(), true,
                               new StreamTransformationFilter(e,
-                                                             new CryptoPP::HexEncoder (
-                                                                                       new FileSink(ciphertext_file.c_str(), binaryfile_bool)
+                                                             new HexEncoder (
+                                                                                       new FileSink(ciphertext_file.c_str(), false /* non-binary */)
                                                                                        ) // HexEncoder
                                                              ) // StreamTransformation
                               , binaryfile_bool); // FileSource
@@ -367,8 +364,8 @@ int main(int argc, const char * argv[])
                 //  a scheme will result in an exception
                 FileSource pt(plaintext_file.c_str(), true,
                               new StreamTransformationFilter(e,
-                                                             new CryptoPP::HexEncoder (
-                                                                                       new FileSink(ciphertext_file.c_str(), binaryfile_bool)
+                                                             new HexEncoder (
+                                                                                       new FileSink(ciphertext_file.c_str(), false /* non-binary */)
                                                                                        ) // HexEncoder
                                                              ) // StreamTransformationFilter
                               , binaryfile_bool); // FileSource
@@ -410,8 +407,8 @@ int main(int argc, const char * argv[])
                 //  to the block size of the cipher.
                 FileSource pt(plaintext_file.c_str(), true,
                               new StreamTransformationFilter(e,
-                                                             new CryptoPP::HexEncoder(
-                                                                                      new FileSink(ciphertext_file.c_str(), binaryfile_bool)
+                                                             new HexEncoder(
+                                                                                      new FileSink(ciphertext_file.c_str(), false /* non-binary */)
                                                                                       ) // HexEncoder
                                                              ) // StreamTransformationFilter
                               , binaryfile_bool); // FileSource

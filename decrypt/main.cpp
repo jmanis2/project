@@ -134,7 +134,7 @@ int main(int argc, const char * argv[])
     
     // Read the key into an array using arraysink
     FileSource kf(key_file.c_str(), true,
-                  new HexDecoder(new ArraySink(key, key_size)), binaryfile_bool); // FileSource
+                  new HexDecoder(new ArraySink(key, key_size)), false /* non-binary */); // FileSource
     
     if (verbose_bool) {
         ArraySource ssk(key, key_size, true /*pumpAll*/,
@@ -193,7 +193,7 @@ int main(int argc, const char * argv[])
                                                                              new FileSink(plaintext_file.c_str(), binaryfile_bool)
                                                                              ) // StringTransform
                                               ) // HexDecoder
-                              , binaryfile_bool); // StringSource
+                              , false /* non-binary */); // StringSource
                 
                 
                 // Stop the timer and output the result to stdout
@@ -238,7 +238,7 @@ int main(int argc, const char * argv[])
                                                                              new FileSink(plaintext_file.c_str(), binaryfile_bool)
                                                                              ) // StringTransform
                                               ) // HexDecoder
-                              , binaryfile_bool); // StringSource
+                              , false /* non-binary */); // StringSource
                 
                 // Stop the timer and output the result to stdout
                 t.stop();
@@ -281,7 +281,7 @@ int main(int argc, const char * argv[])
                                                                              new FileSink(plaintext_file.c_str(), binaryfile_bool)
                                                                              ) // StringTransform
                                               ) // HexDecoder
-                              , binaryfile_bool); // StringSource
+                              , false /* non-binary */); // StringSource
                 
                 // Stop the timer and output the result to stdout
                 t.stop();
@@ -325,7 +325,7 @@ int main(int argc, const char * argv[])
                                                                              new FileSink(plaintext_file.c_str(), binaryfile_bool)
                                                                              ) // StringTransform
                                               ) // HexDecoder
-                              , binaryfile_bool); // StringSource
+                              , false /* non-binary */); // StringSource
                 
                 // Stop the timer and output the result to stdout
                 t.stop();
@@ -369,7 +369,7 @@ int main(int argc, const char * argv[])
                                                                              new FileSink(plaintext_file.c_str(), binaryfile_bool)
                                                                              ) // StringTransform
                                               ) // HexDecoder
-                              , binaryfile_bool); // StringSource
+                              , false /* non-binary */); // StringSource
                 
                 // Stop the timer and output the result to stdout
                 t.stop();
