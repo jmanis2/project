@@ -146,10 +146,6 @@ int main(int argc, const char * argv[])
     FileSource kf(key_file.c_str(), true,
                   new HexDecoder(new ArraySink(key, key_size)), binaryfile_bool); // FileSource
     
-    // Determin key_size and resize here
-    //key2.resize();
-    //cout << "key2: " << key2 << endl;  //DEBUG
-    
     // Generate random IV
     prng.GenerateBlock(iv, sizeof(iv));
     
@@ -188,9 +184,6 @@ int main(int argc, const char * argv[])
             // Perform Electronic Code Book (ECB) encryption and record time
             ///////////////////////////////////////////////////////////
             
-            // start timer
-            t.start();
-            
             // perform encryption here
             try
             {
@@ -203,6 +196,10 @@ int main(int argc, const char * argv[])
                 ECB_Mode< AES >::Encryption e;
                 e.SetKey(key, key_size);
                 
+                // start timer
+                t.start();
+                
+                
                 // The StreamTransformationFilter adds padding
                 //  as required. ECB and CBC Mode must be padded
                 //  to the block size of the cipher.
@@ -212,7 +209,11 @@ int main(int argc, const char * argv[])
                                                                              new FileSink(ciphertext_file.c_str(), binaryfile_bool)
                                                                              ) // HexEncoder
                                                              ) // StreamTransformationFilter
-                              ); // FileSource
+                              , binaryfile_bool); // FileSource
+                // Stop the timer and output the result to stdout
+                t.stop();
+                cout << t.getElapsedTimeInMilliSec() << "   ";
+                
             }
             catch(const CryptoPP::Exception& e)
             {
@@ -220,9 +221,6 @@ int main(int argc, const char * argv[])
                 exit(1);
             }
             
-            // Stop the timer and output the result to stdout
-            t.stop();
-            cout << t.getElapsedTimeInMilliSec() << "   ";
             
             ///////////////////
             /* DEBUG SECTION */
@@ -247,7 +245,7 @@ int main(int argc, const char * argv[])
                                                                              new FileSink(plaintext_file2.c_str(), false)
                                                                              ) // StringTransform
                                               ) // HexDecoder
-                              , binaryfile_bool); // StringSource
+                              , binaryfile_bool); // FileSource
             }
             catch(const CryptoPP::Exception& e)
             {
@@ -265,9 +263,6 @@ int main(int argc, const char * argv[])
         ///////////////////////////////////////////////////////////
         if (mode=="CBC"||mode=="ALL") {
             
-            // start timer
-            t.start();
-            
             // perform encryption here
             try
             {
@@ -279,6 +274,9 @@ int main(int argc, const char * argv[])
                 CBC_Mode< AES >::Encryption e;
                 e.SetKeyWithIV(key, key_size, iv);
                 
+                // start timer
+                t.start();
+                
                 // The StreamTransformationFilter adds padding
                 //  as required. ECB and CBC Mode must be padded
                 //  to the block size of the cipher.
@@ -288,7 +286,13 @@ int main(int argc, const char * argv[])
                                                                              new FileSink(ciphertext_file.c_str(), binaryfile_bool)
                                                                              ) // HexEncoder
                                                              ) // StreamTransformation
-                              ); // FileSource
+                              , binaryfile_bool); // FileSource
+                
+                // Stop the timer
+                t.stop();
+                
+                // Perform output to stdout of performance stats
+                cout << t.getElapsedTimeInSec() << "    ";
             }
             
             catch(const CryptoPP::Exception& e)
@@ -297,19 +301,12 @@ int main(int argc, const char * argv[])
                 exit(1);
             }
             
-            // Stop the timer
-            t.stop();
-            
-            // Perform output to stdout of performance stats
-            cout << t.getElapsedTimeInSec() << "    ";
         }
         
         ///////////////////////////////////////////////////////////
         // Perform Output Feedback encryption and record time
         ///////////////////////////////////////////////////////////
         if (mode=="OFB"||mode=="ALL") {
-            // start timer
-            t.start();
             
             // perform encryption here
             try
@@ -322,6 +319,9 @@ int main(int argc, const char * argv[])
                 OFB_Mode< AES >::Encryption e;
                 e.SetKeyWithIV(key, key_size, iv);
                 
+                // Start timer
+                t.start();
+                
                 // OFB mode must not use padding. Specifying
                 //  a scheme will result in an exception
                 FileSource pt(plaintext_file.c_str(), true,
@@ -330,26 +330,24 @@ int main(int argc, const char * argv[])
                                                                                        new FileSink(ciphertext_file.c_str(), binaryfile_bool)
                                                                                        ) // HexEncoder
                                                              ) // StreamTransformation
-                              ); // FileSource
+                              , binaryfile_bool); // FileSource
+                
+                //Stop timer
+                t.stop();
+                cout << t.getElapsedTimeInSec() << "    ";
+                
             }
             catch(const CryptoPP::Exception& e)
             {
                 cerr << e.what() << endl;
                 exit(1);
             }
-            
-            //Stop timer
-            t.stop();
-            cout << t.getElapsedTimeInSec() << "    ";
         }
         
         ///////////////////////////////////////////////////////////
         // Perform Cipher Feedback encryption and record time
         ///////////////////////////////////////////////////////////
         if (mode=="CFB"||mode=="ALL") {
-            
-            // start timer
-            t.start();
             
             // perform encryption here
             try
@@ -362,6 +360,9 @@ int main(int argc, const char * argv[])
                 CFB_Mode< AES >::Encryption e;
                 e.SetKeyWithIV(key, key_size, iv);
                 
+                // start timer
+                t.start();
+                
                 // CFB mode must not use padding. Specifying
                 //  a scheme will result in an exception
                 FileSource pt(plaintext_file.c_str(), true,
@@ -370,7 +371,11 @@ int main(int argc, const char * argv[])
                                                                                        new FileSink(ciphertext_file.c_str(), binaryfile_bool)
                                                                                        ) // HexEncoder
                                                              ) // StreamTransformationFilter
-                              ); // FileSource
+                              , binaryfile_bool); // FileSource
+                
+                //Stop timer
+                t.stop();
+                cout << t.getElapsedTimeInSec() << "   ";
             }
             catch(const CryptoPP::Exception& e)
             {
@@ -378,18 +383,13 @@ int main(int argc, const char * argv[])
                 exit(1);
             }
             
-            //Stop timer
-            t.stop();
-            cout << t.getElapsedTimeInSec() << "   ";
+            
         }
         
         ///////////////////////////////////////////////////////////
         // Perform Counter encryption and record time
         ///////////////////////////////////////////////////////////
         if (mode=="CTR"||mode=="ALL") {
-            
-            // start timer
-            t.start();
             
             // perform encryption here
             try
@@ -402,6 +402,9 @@ int main(int argc, const char * argv[])
                 CTR_Mode< AES >::Encryption e;
                 e.SetKeyWithIV(key, key_size, iv);
                 
+                // start timer
+                t.start();
+                
                 // The StreamTransformationFilter adds padding
                 //  as required. ECB and CBC Mode must be padded
                 //  to the block size of the cipher.
@@ -411,7 +414,11 @@ int main(int argc, const char * argv[])
                                                                                       new FileSink(ciphertext_file.c_str(), binaryfile_bool)
                                                                                       ) // HexEncoder
                                                              ) // StreamTransformationFilter
-                              ); // FileSource
+                              , binaryfile_bool); // FileSource
+                
+                //Stop timer
+                t.stop();
+                cout << t.getElapsedTimeInSec() << "   " << endl;
                 
             }
             catch(const CryptoPP::Exception& e)
@@ -419,10 +426,6 @@ int main(int argc, const char * argv[])
                 cerr << e.what() << endl;
                 exit(1);
             }
-            
-            //Stop timer
-            t.stop();
-            cout << t.getElapsedTimeInSec() << "   " << endl;
             
         }
     }

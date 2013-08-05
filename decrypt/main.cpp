@@ -76,7 +76,7 @@ int main(int argc, const char * argv[])
     
     // Other variables that can be deleted in final version
     string encodedKey, encodedIv;
-
+    
     // Parse the command line options
     int opt;  // Holds the current option being parsed for getopt
     
@@ -135,20 +135,20 @@ int main(int argc, const char * argv[])
     // Read the key into an array using arraysink
     FileSource kf(key_file.c_str(), true,
                   new HexDecoder(new ArraySink(key, key_size)), binaryfile_bool); // FileSource
-
+    
     if (verbose_bool) {
-    ArraySource ssk(key, key_size, true /*pumpAll*/,
-                     new HexEncoder(
-                                    new StringSink(encodedKey)
-                                    ) // HexDecoder
-                     ); // StringSource
-    
-    ArraySource ssv(iv, AES::BLOCKSIZE, true /*pumpAll*/,
-                     new HexEncoder(
-                                    new StringSink(encodedIv)
-                                    ) // HexDecoder
-                     ); // StringSource
-    
+        ArraySource ssk(key, key_size, true /*pumpAll*/,
+                        new HexEncoder(
+                                       new StringSink(encodedKey)
+                                       ) // HexDecoder
+                        ); // StringSource
+        
+        ArraySource ssv(iv, AES::BLOCKSIZE, true /*pumpAll*/,
+                        new HexEncoder(
+                                       new StringSink(encodedIv)
+                                       ) // HexDecoder
+                        ); // StringSource
+        
         cout << "key: " << encodedKey << endl;
         cout << "iv: " << encodedIv << endl;
     }
@@ -166,9 +166,6 @@ int main(int argc, const char * argv[])
         ///////////////////////////////////////////////////////////
         if (mode=="ECB"||mode=="ALL") {
             
-            // start timer
-            t.start();
-            
             // perform decryption here
             try
             {
@@ -177,8 +174,11 @@ int main(int argc, const char * argv[])
                 if (mode == "ALL") {
                     ciphertext_file = "ciphertextecb.txt";
                     plaintext_file = "plaintextecb.txt";
-
+                    
                 }
+                
+                // start timer
+                t.start();
                 
                 // Setup decryption options
                 ECB_Mode< AES >::Decryption d;
@@ -196,25 +196,23 @@ int main(int argc, const char * argv[])
                               , binaryfile_bool); // StringSource
                 
                 
+                // Stop the timer and output the result to stdout
+                t.stop();
+                cout << t.getElapsedTimeInMilliSec() << "   ";
+                
+                
             }
             catch(const CryptoPP::Exception& e)
             {
                 cerr << e.what() << endl;
                 exit(1);
             }
-            
-            // Stop the timer and output the result to stdout
-            t.stop();
-            cout << t.getElapsedTimeInMilliSec() << "   ";
         }
         
         ///////////////////////////////////////////////////////////
         // Perform Cipher Block Chaining decryption and record time
         ///////////////////////////////////////////////////////////
         if (mode=="CBC"||mode=="ALL") {
-            
-            // start timer
-            t.start();
             
             // perform decryption here
             try
@@ -229,8 +227,11 @@ int main(int argc, const char * argv[])
                 CBC_Mode< AES >::Decryption d;
                 d.SetKeyWithIV(key, key_size, iv);
                 
+                // start timer
+                t.start();
+                
                 // The StreamTransformationFilter removes
-                //  padding as required.                
+                //  padding as required.
                 FileSource ct(ciphertext_file.c_str() , true,
                               new HexDecoder (
                                               new StreamTransformationFilter(d,
@@ -238,26 +239,23 @@ int main(int argc, const char * argv[])
                                                                              ) // StringTransform
                                               ) // HexDecoder
                               , binaryfile_bool); // StringSource
+                
+                // Stop the timer and output the result to stdout
+                t.stop();
+                cout << t.getElapsedTimeInMilliSec() << "   ";
+                
             }
             catch(const CryptoPP::Exception& e)
             {
                 cerr << e.what() << endl;
                 exit(1);
             }
-            
-            // Stop the timer and output the result to stdout
-            t.stop();
-            cout << t.getElapsedTimeInMilliSec() << "   ";
-
         }
         
         ///////////////////////////////////////////////////////////
         // Perform Output Feedback decryption and record time
         ///////////////////////////////////////////////////////////
         if (mode=="OFB"||mode=="ALL") {
-            
-            // start timer
-            t.start();
             
             // perform decryption here
             try
@@ -272,6 +270,9 @@ int main(int argc, const char * argv[])
                 OFB_Mode< AES >::Decryption d;
                 d.SetKeyWithIV(key, key_size, iv);
                 
+                // start timer
+                t.start();
+                
                 // The StreamTransformationFilter removes
                 //  padding as required.
                 FileSource ct(ciphertext_file.c_str() , true,
@@ -281,6 +282,11 @@ int main(int argc, const char * argv[])
                                                                              ) // StringTransform
                                               ) // HexDecoder
                               , binaryfile_bool); // StringSource
+                
+                // Stop the timer and output the result to stdout
+                t.stop();
+                cout << t.getElapsedTimeInMilliSec() << "   ";
+                
             }
             catch(const CryptoPP::Exception& e)
             {
@@ -288,18 +294,12 @@ int main(int argc, const char * argv[])
                 exit(1);
             }
             
-            // Stop the timer and output the result to stdout
-            t.stop();
-            cout << t.getElapsedTimeInMilliSec() << "   ";
         }
         
         ///////////////////////////////////////////////////////////
         // Perform Cipher Feedback decryption and record time
         ///////////////////////////////////////////////////////////
         if (mode=="CFB"||mode=="ALL") {
-            
-            // start timer
-            t.start();
             
             // perform decryption here
             try
@@ -314,6 +314,9 @@ int main(int argc, const char * argv[])
                 CFB_Mode< AES >::Decryption d;
                 d.SetKeyWithIV(key, key_size, iv);
                 
+                // start timer
+                t.start();
+                
                 // The StreamTransformationFilter removes
                 //  padding as required.
                 FileSource ct(ciphertext_file.c_str() , true,
@@ -324,16 +327,16 @@ int main(int argc, const char * argv[])
                                               ) // HexDecoder
                               , binaryfile_bool); // StringSource
                 
+                // Stop the timer and output the result to stdout
+                t.stop();
+                cout << t.getElapsedTimeInMilliSec() << "   ";
+                
             }
             catch(const CryptoPP::Exception& e)
             {
                 cerr << e.what() << endl;
                 exit(1);
             }
-            
-            // Stop the timer and output the result to stdout
-            t.stop();
-            cout << t.getElapsedTimeInMilliSec() << "   ";
         }
         
         ///////////////////////////////////////////////////////////
@@ -341,21 +344,22 @@ int main(int argc, const char * argv[])
         ///////////////////////////////////////////////////////////
         if (mode=="CTR"||mode=="ALL") {
             
-            // start timer
-            t.start();
-            
             // perform decryption here
             try
             {
+                
                 // overwrite default output file if in performance test mode
                 if (mode == "ALL") {
                     ciphertext_file = "ciphertextctr.txt";
-                   plaintext_file = "plaintextctr.txt";
+                    plaintext_file = "plaintextctr.txt";
                 }
                 
                 // Setup decryption options
                 CTR_Mode< AES >::Decryption d;
                 d.SetKeyWithIV(key, key_size, iv);
+                
+                // start timer
+                t.start();
                 
                 // The StreamTransformationFilter removes
                 //  padding as required.
@@ -367,16 +371,16 @@ int main(int argc, const char * argv[])
                                               ) // HexDecoder
                               , binaryfile_bool); // StringSource
                 
+                // Stop the timer and output the result to stdout
+                t.stop();
+                cout << t.getElapsedTimeInMilliSec() << endl;
+                
             }
             catch(const CryptoPP::Exception& e)
             {
                 cerr << e.what() << endl;
                 exit(1);
             }
-            
-            // Stop the timer and output the result to stdout
-            t.stop();
-            cout << t.getElapsedTimeInMilliSec() << endl;
         }
     }
     
