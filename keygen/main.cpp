@@ -93,7 +93,9 @@ int main(int argc, char *argv[])
         // Save a binary key file
         key_file = "key.bin";
         StringSource(key, key.size(), true,
-                     new FileSink(key_file.c_str(), true)
+                     new CryptoPP::HexEncoder(
+                                              new FileSink(key_file.c_str(), true)
+                                              ) //HexEncoder
                      ); // StringSource
     }
     

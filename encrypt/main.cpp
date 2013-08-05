@@ -7,6 +7,10 @@
 //
 #include <iostream>
 #include <iomanip>
+#include <cmath>
+#include <ctime>
+#include <ctype.h>
+#include <unistd.h>
 
 #include "osrng.h"
 using CryptoPP::AutoSeededRandomPool;
@@ -50,11 +54,6 @@ using CryptoPP::OFB_Mode;
 using CryptoPP::CFB_Mode;
 using CryptoPP::CTR_Mode;
 
-
-#include <cmath>
-#include <ctime>
-#include <ctype.h>
-#include <unistd.h>
 #include "Timer.h"
 
 using namespace std;
@@ -219,10 +218,13 @@ int main(int argc, const char * argv[])
                 exit(1);
             }
             
+            // Stop the timer and output the result to stdout
             t.stop();
             cout << t.getElapsedTimeInMilliSec() << "   ";
             
+            ///////////////////
             /* DEBUG SECTION */
+            ///////////////////
             string plaintext_file2 = "plaintext2.txt";
             
             try
@@ -251,7 +253,9 @@ int main(int argc, const char * argv[])
                 exit(1);
             }
             
-            //END DEBUG SECTION
+            /////////////////////
+            //END DEBUG SECTION//
+            /////////////////////
         }
         
         ///////////////////////////////////////////////////////////
