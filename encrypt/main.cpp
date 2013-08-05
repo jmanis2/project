@@ -132,7 +132,7 @@ int main(int argc, const char * argv[])
                                      ) // HexDecoder
                       ); // FileSource    }
         
-        //key2.resize(<#size_type newSize#>);
+        //key2.resize();
         //cout << "key2: " << key2 << endl;  //DEBUG
      
     */

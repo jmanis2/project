@@ -41,15 +41,57 @@ using CryptoPP::AES;
 #include "modes.h"
 using CryptoPP::ECB_Mode;
 
+#include "hex.h"
+using CryptoPP::HexEncoder;
+using CryptoPP::HexDecoder;
+
+#include "files.h"
+using CryptoPP::FileSource;
+using CryptoPP::FileSink;
+
+#include "filters.h"
+using CryptoPP::StringSink;
+using CryptoPP::ArraySink;
+using CryptoPP::ArraySource;
+using CryptoPP::StringSource;
+using CryptoPP::StreamTransformationFilter;
+
+
 int main(int argc, char* argv[])
 {
 	AutoSeededRandomPool prng;
-    
+   	string cipher, encoded, recovered;
+ 
 	byte key[AES::DEFAULT_KEYLENGTH];
 	prng.GenerateBlock(key, sizeof(key));
     
+    // Pretty print key
+	encoded.clear();
+	StringSource(key, sizeof(key), true,
+                 new HexEncoder(
+                                new StringSink(encoded)
+                                ) // HexEncoder
+                 ); // StringSource
+	cout << "key: " << encoded << endl;
+
+    // This writes the key into an file from an array
+    ArraySource(key, AES::DEFAULT_KEYLENGTH, true /* pumpAll*/,
+                  new HexEncoder(
+                                 new FileSink("key.txt", false)
+                                 ) // HexEncoder
+                  ); // ArraySource    }
+    
+    // Zeroize the key to make sure its getting read
+    memset(key, 0, AES::DEFAULT_KEYLENGTH);
+    
+    // This reads the key into an array using array
+    FileSource kf("key.txt", true,
+                        new HexDecoder(
+                                new ArraySink(key, AES::DEFAULT_KEYLENGTH)
+                                        ) //HexDecoder
+                  ); // FileSource    }
+    
 	string plain = "ECB Mode Test";
-	string cipher, encoded, recovered;
     
 	/*********************************\
      \*********************************/
