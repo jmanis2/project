@@ -35,6 +35,7 @@ using CryptoPP::FileSink;
 
 #include "filters.h"
 using CryptoPP::StringSink;
+using CryptoPP::ArraySink;
 using CryptoPP::StringSource;
 using CryptoPP::StreamTransformationFilter;
 
@@ -68,26 +69,29 @@ int main(int argc, const char * argv[])
     AutoSeededRandomPool prng;
     
     // Set up a test string to encrypt and variables to hold the versions.  Will replace this with the file read later
-    char *ciphertextfilename, *plaintextfilename,  *plaintextfilename2;
-    string encoded, key_str, key_hex, key_file, plaintext_file;
+    string encoded, recovered, key_str, key_hex;
     
-    plaintextfilename = "plaintext.txt";
-    //plaintextfilename2 = "plaintext2.txt";
-    ciphertextfilename = "ciphertext.txt";
+    // Set up default options
+    string plaintext_file = "plaintext.txt";        // Set default plain text filename
+    string ciphertext_file = "ciphertext.txt";      // Set default cipher text filename
+    string key_file = "key.txt";                      // Set default key filename
+    string mode = "ALL";
+    bool binaryfile_bool = false;                   // By default create non-boolean files
+    bool verbose_bool = false;                      // By default do not be verbose
+    int performance_loop = 20;
     
     // Create key variable
     int key_size=AES::DEFAULT_KEYLENGTH;
-    SecByteBlock key(key_size);
-    SecByteBlock key2(key_size);
-    
-    int binaryfile = 0, opt;
+    byte key[key_size];
     
     // Parse the command line options
-    while ((opt = getopt (argc, (char **)argv, "bhk::p::m:")) != -1)
+    int opt;  // Holds the current option being parsed for getopt
+    
+    while ((opt = getopt (argc, (char **)argv, "bhk::lp::m:c::")) != -1)
         switch (opt)
     {
         case 'b':
-            binaryfile = 1;
+            binaryfile_bool = true;
             break;
         case 'k':
             key_file = optarg;
@@ -95,8 +99,21 @@ int main(int argc, const char * argv[])
         case 'p':
             plaintext_file = optarg;
             break;
+        case 'l':
+            performance_loop = atoi(optarg);
+            mode = "ALL";
+            break;
+        case 'm':
+            mode = optarg;
+            break;
+        case 'c':
+            ciphertext_file = optarg;
+            break;
+        case 'v':
+            verbose_bool = true;
+            break;
         case 'h':
-            cout << "usage: encrypt [-b] -k key_file [-m mode (CBC, OFB, CFB, ECB, CTR, ALL)] -p plaintext_file" << endl;
+            cout << "usage: encrypt [-bv] -k key_file [-m mode (CBC, OFB, CFB, ECB, CTR)]  [-l loop_count] -p plaintext_file -c ciphertext_file" << endl;
             return 1;
         case '?':
             if (optopt == 'k')
@@ -105,7 +122,7 @@ int main(int argc, const char * argv[])
                 fprintf (stderr, "Option -%c requires a plaintext filename.\n", optopt);
             else if (isprint (optopt)) {
                 fprintf (stderr, "Unknown option `-%c'.\n", optopt);
-                cout << "usage: encrypt [-b] -k key_file [-m mode (CBC, OFB, CFB, ECB, CTR, ALL)] -p plaintext_file" << endl;
+                cout << "usage: encrypt [-bv] -k key_file [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] -p plaintext_file -c ciphertext_file" << endl;
             } else
                 fprintf (stderr,
                          "Unknown option character `\\x%x'.\n",
@@ -115,47 +132,38 @@ int main(int argc, const char * argv[])
             abort ();
     }
     
-    
-    // Read Key into memory here
-    /*if (binaryfile) {
-        // Read a binary file
-        FileSource kf(key_file, true,
-                      new HexDecoder(
-                                     new CryptoPP::ArraySink(key2)
-                                     ) // HexDecoder
-                      ); // FileSource
+    // Read Key file and save into byte array
+    if (binaryfile_bool) {
+        key_file="key.bin";
     } else {
-        //          Read a non-binary file
-        FileSource kf(key_file, false,
-                      new HexDecoder(
-                                     new CryptoPP::ArraySink(key2)
-                                     ) // HexDecoder
-                      ); // FileSource    }
-        
-        //key2.resize();
-        //cout << "key2: " << key2 << endl;  //DEBUG
-     
-    */
-        // For now I'm just generating the key in the enc prog for testing.
-      prng.GenerateBlock(key, key.size());
-        
-        // Encode key into hex for printing //DEBUG
-        encoded.clear();
-        StringSource(key, sizeof(key), true,
-                     new HexEncoder(
-                                    new StringSink(encoded)
-                                    ) // HexEncoder
-                     ); // StringSource
-        
-        cout << "key: " << encoded << endl;
-        
-        
-        // Create IV based on AES block size
-        byte iv[AES::BLOCKSIZE];
-        prng.GenerateBlock(iv, sizeof(iv));
-        
-        
-        //Encode IV into hex for printing  //DEBUG
+        key_file="key.txt";
+    }
+    
+    // This reads the key into an array using array
+    FileSource kf(key_file.c_str(), true,
+                  new HexDecoder(new ArraySink(key, key_size)), binaryfile_bool); // FileSource
+    
+    // Determin key_size and resize here
+    //key2.resize();
+    //cout << "key2: " << key2 << endl;  //DEBUG
+
+    // Encode key into hex for printing //DEBUG
+    encoded.clear();
+    StringSource(key, key_size, true,
+                 new HexEncoder(
+                                new StringSink(encoded)
+                                ) // HexEncoder
+                 ); // StringSource
+    
+    cout << "key: " << encoded << endl;
+    
+    // Create IV based on AES block size
+    byte iv[AES::BLOCKSIZE];
+    prng.GenerateBlock(iv, sizeof(iv));
+    
+    
+    //Encode IV into hex for printing  //DEBUG
+    if (true) {
         encoded.clear();
         StringSource(iv, sizeof(iv), true,
                      new HexEncoder(
@@ -164,221 +172,254 @@ int main(int argc, const char * argv[])
                      ); // StringSource
         
         cout << "iv: " << encoded << endl;  //DEBUG
-        
-        
-        plaintextfilename="plaintext.txt";
-        //plaintextfilename2="plaintext2.txt";
-        ciphertextfilename="ciphertext.txt";
-        
-        // Set up the stdout header
+    }
+    
+    // Set up the stdout header if in performance test mode
+    if (performance_loop > 1) {
         cout << "ECB    |   CBC     |   OFB     |   CFB     |   CTR     |   Encrypt Time (ms)" << endl;
+    }
+    
+    // If we are running in a perfomance testing mode loop
+    while (performance_loop-- >= 1) {
         
-        ///////////////////////////////////////////////////////////
-        // Perform Electronic Code Book (ECB) encryption and record time
-        ///////////////////////////////////////////////////////////
-        
-        // start timer
-        t.start();
-        
-        // perform encryption here
-        try
-        {
+        if (mode=="ECB"||mode=="ALL") {
+            ///////////////////////////////////////////////////////////
+            // Perform Electronic Code Book (ECB) encryption and record time
+            ///////////////////////////////////////////////////////////
             
-            ECB_Mode< AES >::Encryption e;
-            e.SetKey(key, sizeof(key));
+            // start timer
+            t.start();
             
-            // The StreamTransformationFilter adds padding
-            //  as required. ECB and CBC Mode must be padded
-            //  to the block size of the cipher.
-            FileSource pt(plaintextfilename, true,
-                          new StreamTransformationFilter(e,
-                                                         new FileSink("ciphertextecb.txt", true /*binary*/)
-                                                         ) // StreamTransformationFilter
-                          ); // FileSource
+            // perform encryption here
+            try
+            {
+                // overwrite default output file if in performance test mode
+                if (mode == "ALL") {
+                    ciphertext_file = "ciphertextecb.txt";
+                }
+                
+                // Set encryption mode
+                ECB_Mode< AES >::Encryption e;
+                e.SetKey(key, key_size);
+                
+                // The StreamTransformationFilter adds padding
+                //  as required. ECB and CBC Mode must be padded
+                //  to the block size of the cipher.
+                FileSource pt(plaintext_file.c_str(), true,
+                              new StreamTransformationFilter(e,
+                                                             new HexEncoder (
+                                                                             new FileSink(ciphertext_file.c_str(), binaryfile_bool)
+                                                                             ) // HexEncoder
+                                                             ) // StreamTransformationFilter
+                              ); // FileSource
+            }
+            catch(const CryptoPP::Exception& e)
+            {
+                cerr << e.what() << endl;
+                exit(1);
+            }
+            
+            t.stop();
+            cout << t.getElapsedTimeInMilliSec() << "   ";
+            
+            /* DEBUG SECTION */
+            string plaintext_file2 = "plaintext2.txt";
+            
+            try
+            {
+                // overwrite default output file if in performance test mode
+                if (mode == "ALL") {
+                    ciphertext_file = "ciphertextecb.txt";
+                }
+                
+                ECB_Mode< AES >::Decryption d;
+                d.SetKey(key, key_size);
+                
+                // The StreamTransformationFilter removes
+                //  padding as required.
+                FileSource ct(ciphertext_file.c_str() , true,
+                              new HexDecoder (
+                                              new StreamTransformationFilter(d,
+                                                                             new FileSink(plaintext_file2.c_str(), false)
+                                                                             ) // StringTransform
+                                              ) // HexDecoder
+                              , binaryfile_bool); // StringSource
+            }
+            catch(const CryptoPP::Exception& e)
+            {
+                cerr << e.what() << endl;
+                exit(1);
+            }
+            
+            //END DEBUG SECTION
         }
-        catch(const CryptoPP::Exception& e)
-        {
-            cerr << e.what() << endl;
-            exit(1);
-        }
-        
-        t.stop();
-        cout << t.getElapsedTimeInMilliSec() << "   ";
-        
-        /* DEBUG SECTION
-         try
-         {
-         ECB_Mode< AES >::Decryption d;
-         d.SetKey(key, sizeof(key));
-         
-         // The StreamTransformationFilter removes
-         //  padding as required.
-         FileSource ct(ciphertextfilename , true,
-         new StreamTransformationFilter(d,
-         new FileSink(plaintextfilename2)
-         ) // StreamTransformationFilter
-         ); // StringSource
-         
-         cout << "recovered text: " << recovered << endl;
-         
-         
-         }
-         catch(const CryptoPP::Exception& e)
-         {
-         cerr << e.what() << endl;
-         exit(1);
-         }
-         
-         
-         */ //END DEBUG SECTION
-        
         
         ///////////////////////////////////////////////////////////
         // Perform Cipher Block Chaining encryption and record time
         ///////////////////////////////////////////////////////////
-        
-        // start timer
-        t.start();
-        
-        // perform encryption here
-        try
-        {
-            //cout << "plain text: " << plain << endl;  //DEBUG
+        if (mode=="CBC"||mode=="ALL") {
             
-            CBC_Mode< AES >::Encryption e;
-            e.SetKeyWithIV(key, sizeof(key), iv);
+            // start timer
+            t.start();
             
-            // The StreamTransformationFilter adds padding
-            //  as required. ECB and CBC Mode must be padded
-            //  to the block size of the cipher.
-            FileSource pt(plaintextfilename, true,
-                          new StreamTransformationFilter(e,
-                                                         new FileSink("ciphertextcbc.txt", true /*binary*/)
-                                                         ) // StreamTransformationFilter
-                          ); // FileSource
+            // perform encryption here
+            try
+            {
+                // overwrite default output file if in performance test mode
+                if (mode == "ALL") {
+                    ciphertext_file = "ciphertextcbc.txt";
+                }
+                
+                CBC_Mode< AES >::Encryption e;
+                e.SetKeyWithIV(key, key_size, iv);
+                
+                // The StreamTransformationFilter adds padding
+                //  as required. ECB and CBC Mode must be padded
+                //  to the block size of the cipher.
+                FileSource pt(plaintext_file.c_str(), true,
+                              new StreamTransformationFilter(e,
+                                                             new HexEncoder (
+                                                                             new FileSink(ciphertext_file.c_str(), binaryfile_bool)
+                                                                             ) // HexEncoder
+                                                             ) // StreamTransformation
+                              ); // FileSource
+            }
             
+            catch(const CryptoPP::Exception& e)
+            {
+                cerr << e.what() << endl;
+                exit(1);
+            }
+            
+            // Stop the timer
+            t.stop();
+            
+            // Perform output to stdout of performance stats
+            cout << t.getElapsedTimeInSec() << "    ";
         }
-        
-        
-        catch(const CryptoPP::Exception& e)
-        {
-            cerr << e.what() << endl;
-            exit(1);
-        }
-        
-        // Stop the timer
-        t.stop();
-        
-        // Perform output to stdout of performance stats
-        cout << t.getElapsedTimeInSec() << "    ";
-        
         
         ///////////////////////////////////////////////////////////
         // Perform Output Feedback encryption and record time
         ///////////////////////////////////////////////////////////
-        
-        // start timer
-        t.start();
-        
-        // perform encryption here
-        try
-        {
+        if (mode=="OFB"||mode=="ALL") {
+            // start timer
+            t.start();
             
-            OFB_Mode< AES >::Encryption e;
-            e.SetKeyWithIV(key, sizeof(key), iv);
+            // perform encryption here
+            try
+            {
+                // overwrite default output file if in performance test mode
+                if (mode == "ALL") {
+                    ciphertext_file = "ciphertextofb.txt";
+                }
+                
+                OFB_Mode< AES >::Encryption e;
+                e.SetKeyWithIV(key, key_size, iv);
+                
+                // OFB mode must not use padding. Specifying
+                //  a scheme will result in an exception
+                FileSource pt(plaintext_file.c_str(), true,
+                              new StreamTransformationFilter(e,
+                                                             new CryptoPP::HexEncoder (
+                                                                                       new FileSink(ciphertext_file.c_str(), binaryfile_bool)
+                                                                                       ) // HexEncoder
+                                                             ) // StreamTransformation
+                              ); // FileSource
+            }
+            catch(const CryptoPP::Exception& e)
+            {
+                cerr << e.what() << endl;
+                exit(1);
+            }
             
-            // OFB mode must not use padding. Specifying
-            //  a scheme will result in an exception
-            FileSource pt(plaintextfilename, true,
-                          new StreamTransformationFilter(e,
-                                                         new FileSink("ciphertextofb.txt", true /*binary*/)
-                                                         ) // StreamTransformationFilter
-                          ); // FileSource
-            
-            
-            
+            //Stop timer
+            t.stop();
+            cout << t.getElapsedTimeInSec() << "    ";
         }
-        catch(const CryptoPP::Exception& e)
-        {
-            cerr << e.what() << endl;
-            exit(1);
-        }
-        
-        //Stop timer
-        t.stop();
-        cout << t.getElapsedTimeInSec() << "    ";
         
         ///////////////////////////////////////////////////////////
         // Perform Cipher Feedback encryption and record time
         ///////////////////////////////////////////////////////////
-        
-        // start timer
-        t.start();
-        
-        // perform encryption here
-        try
-        {
+        if (mode=="CFB"||mode=="ALL") {
             
-            CFB_Mode< AES >::Encryption e;
-            e.SetKeyWithIV(key, sizeof(key), iv);
+            // start timer
+            t.start();
             
-            // CFB mode must not use padding. Specifying
-            //  a scheme will result in an exception
-            FileSource pt(plaintextfilename, true,
-                          new StreamTransformationFilter(e,
-                                                         new FileSink("ciphertextcfb.txt", true /*binary*/)
-                                                         ) // StreamTransformationFilter
-                          ); // FileSource
+            // perform encryption here
+            try
+            {
+                // overwrite default output file if in performance test mode
+                if (mode == "ALL") {
+                    ciphertext_file = "ciphertextcfb.txt";
+                }
+                
+                CFB_Mode< AES >::Encryption e;
+                e.SetKeyWithIV(key, key_size, iv);
+                
+                // CFB mode must not use padding. Specifying
+                //  a scheme will result in an exception
+                FileSource pt(plaintext_file.c_str(), true,
+                              new StreamTransformationFilter(e,
+                                                             new CryptoPP::HexEncoder (
+                                                                                       new FileSink(ciphertext_file.c_str(), binaryfile_bool)
+                                                                                       ) // HexEncoder
+                                                             ) // StreamTransformationFilter
+                              ); // FileSource
+            }
+            catch(const CryptoPP::Exception& e)
+            {
+                cerr << e.what() << endl;
+                exit(1);
+            }
             
-            
-            
+            //Stop timer
+            t.stop();
+            cout << t.getElapsedTimeInSec() << "   ";
         }
-        catch(const CryptoPP::Exception& e)
-        {
-            cerr << e.what() << endl;
-            exit(1);
-        }
-        
-        //Stop timer
-        t.stop();
-        cout << t.getElapsedTimeInSec() << "   ";
-        
-        
         
         ///////////////////////////////////////////////////////////
-        // Perform Counter  encryption and record time
+        // Perform Counter encryption and record time
         ///////////////////////////////////////////////////////////
-        
-        // start timer
-        t.start();
-        
-        // perform encryption here
-        try
-        {        
-            CTR_Mode< AES >::Encryption e;
-            e.SetKeyWithIV(key, sizeof(key), iv);
+        if (mode=="CTR"||mode=="ALL") {
             
-            // The StreamTransformationFilter adds padding
-            //  as required. ECB and CBC Mode must be padded
-            //  to the block size of the cipher.
-            FileSource pt(plaintextfilename, true,
-                          new StreamTransformationFilter(e,
-                                                         new FileSink("ciphertextctr.txt", true /*binary*/)
-                                                         ) // StreamTransformationFilter
-                          ); // FileSource
+            // start timer
+            t.start();
+            
+            // perform encryption here
+            try
+            {
+                // overwrite default output file if in performance test mode
+                if (mode == "ALL") {
+                    ciphertext_file = "ciphertextctr.txt";
+                }
+                
+                CTR_Mode< AES >::Encryption e;
+                e.SetKeyWithIV(key, key_size, iv);
+                
+                // The StreamTransformationFilter adds padding
+                //  as required. ECB and CBC Mode must be padded
+                //  to the block size of the cipher.
+                FileSource pt(plaintext_file.c_str(), true,
+                              new StreamTransformationFilter(e,
+                                                             new CryptoPP::HexEncoder(
+                                                                                      new FileSink(ciphertext_file.c_str(), binaryfile_bool)
+                                                                                      ) // HexEncoder
+                                                             ) // StreamTransformationFilter
+                              ); // FileSource
+                
+            }
+            catch(const CryptoPP::Exception& e)
+            {
+                cerr << e.what() << endl;
+                exit(1);
+            }
+            
+            //Stop timer
+            t.stop();
+            cout << t.getElapsedTimeInSec() << "   " << endl;
             
         }
-        catch(const CryptoPP::Exception& e)
-        {
-            cerr << e.what() << endl;
-            exit(1);
-        }
-        
-        //Stop timer
-        t.stop();
-        cout << t.getElapsedTimeInSec() << "   ";
-        
-        
-        return 0;
     }
-    
+    return 0;
+}
+
