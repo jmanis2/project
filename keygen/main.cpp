@@ -10,7 +10,10 @@
 #include <ctime>
 #include <ctype.h>
 #include <unistd.h>
+#include <iostream>
 
+#include <string>
+using std::string;
 
 #include "files.h"
 using CryptoPP::FileSink;
@@ -19,7 +22,6 @@ using CryptoPP::FileSink;
 using CryptoPP::StringSink;
 using CryptoPP::StringSource;
 using CryptoPP::StreamTransformationFilter;
-
 
 #include "aes.h"
 using CryptoPP::AES;
@@ -42,21 +44,22 @@ int main(int argc, char *argv[])
     
     // Parse the command line options
     int opt; // Varialbe to hold the current option for getops
-    while ((opt = getopt (argc, argv, "hk:v")) != -1)
+    while ((opt = getopt (argc, argv, "hs:v")) != -1)
         switch (opt)
     {
         case 'k':
             key_size = atoi(optarg);
+            key_file = "key_" + string(optarg) + ".txt";
             break;
         case 'h':
-            cout << "usage: keygen [-b] [-k key_size_in_bytes (16, 24, 32) default=16]" << endl;
+            cout << "usage: keygen [-b] [-s key_size_in_bytes (16, 24, 32) default=16]" << endl;
             return 1;
         case '?':
             if (optopt == 'k')
                 fprintf (stderr, "Option -%c requires a key length arguement (in bytes).\n", optopt);
             else if (isprint (optopt)) {
                 fprintf (stderr, "Unknown option `-%c'.\n", optopt);
-                cout << "usage: keygen [-b] [-k key_size_in_bytes (16, 24, 32) default=16]"  << endl;
+                cout << "usage: keygen [-b] [-s key_size_in_bytes (16, 24, 32) default=16]"  << endl;
             } else
                 fprintf (stderr,
                          "Unknown option character `\\x%x'.\n",

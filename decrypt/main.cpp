@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Jeff Phillips. All rights reserved.
 //
 
-#include <iostream>
 #include <iomanip>
 #include <unistd.h>
 #include <cmath>
