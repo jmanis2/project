@@ -2,7 +2,7 @@
 //  main.cpp
 //  decrypt
 //
-//  Created by Jeff Phillips on 7/23/13.
+//  Created by Jeff Phillips and Daniel Hammons on 7/23/13.
 //  Copyright (c) 2013 Jeff Phillips. All rights reserved.
 //
 
@@ -99,6 +99,9 @@ int main(int argc, const char * argv[])
         case 'm':
             mode = optarg;
             break;
+        case 's':
+            key_size = atoi(optarg);
+            break;
         case 'c':
             ciphertext_file = optarg;
             break;
@@ -106,7 +109,7 @@ int main(int argc, const char * argv[])
             verbose_bool = true;
             break;
         case 'h':
-            cout << "usage: decrypt [-bv] -k key_file [-m mode (CBC, OFB, CFB, ECB, CTR)]  [-l loop_count] -p plaintext_file -c ciphertext_file" << endl;
+            cout << "usage: decrypt [-bv] [-k key_file] [-s key_size (16, 24, 32)] [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] [-p plaintext_file] [-c ciphertext_file]" << endl;
             return 1;
         case '?':
             if (optopt == 'k')
@@ -115,7 +118,7 @@ int main(int argc, const char * argv[])
                 fprintf (stderr, "Option -%c requires a plaintext filename.\n", optopt);
             else if (isprint (optopt)) {
                 fprintf (stderr, "Unknown option `-%c'.\n", optopt);
-                cout << "usage: decrypt [-bv] -k key_file [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] -p plaintext_file -c ciphertext_file" << endl;
+                cout << "usage: decrypt [-bv] [-k key_file] [-s key_size (16, 24, 32)] [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] [-p plaintext_file] [-c ciphertext_file]" << endl;
             } else
                 fprintf (stderr,
                          "Unknown option character `\\x%x'.\n",
