@@ -79,7 +79,7 @@ int main(int argc, const char * argv[])
     // Parse the command line options
     int opt;  // Holds the current option being parsed for getopt
     
-    while ((opt = getopt (argc, (char **)argv, "bhk::l:p::m:c::")) != -1)
+    while ((opt = getopt (argc, (char **)argv, "bhk:l:p:m:c:s:")) != -1)
         switch (opt)
     {
         case 'b':

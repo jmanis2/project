@@ -225,6 +225,7 @@ int main(int argc, const char * argv[])
             ///////////////////
             /* DEBUG SECTION */
             ///////////////////
+            /*
             string plaintext_file2 = "plaintext2.txt";
             
             try
@@ -245,17 +246,18 @@ int main(int argc, const char * argv[])
                                                                              new FileSink(plaintext_file2.c_str(), binaryfile_bool)
                                                                              ) // StringTransform
                                               ) // HexDecoder
-                              , false /* non-binary */); // FileSource
+                              , false); // FileSource
             }
             catch(const CryptoPP::Exception& e)
             {
                 cerr << e.what() << endl;
                 exit(1);
             }
-            
+        
             /////////////////////
             //END DEBUG SECTION//
             /////////////////////
+             */
         }
         
         ///////////////////////////////////////////////////////////
