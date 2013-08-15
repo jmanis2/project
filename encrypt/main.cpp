@@ -80,6 +80,13 @@ int main(int argc, const char * argv[])
     bool verbose_bool = true;                       // By default do not be verbose
     int performance_loop = 20;                      // Set default number of loops
     int iv_size = AES::BLOCKSIZE;                   // Set default iv_size to AES::BLOCKSIZE
+    string usage = "usage: encrypt [-bv] [-k key_file=""key.txt""] [-s key_size (16, 24, 32)] [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] [-p plaintext_file] [-c ciphertext_file]";
+    
+    // Check the arguments and see if options were specified and if not print help
+    if (argc == 1) {
+        cout << usage << endl;
+        return 1;
+    }
     
     // Parse the command line options
     int opt;  // Holds the current option being parsed for getopt
@@ -113,7 +120,7 @@ int main(int argc, const char * argv[])
             verbose_bool = true;
             break;
         case 'h':
-            cout << "usage: encrypt [-bv] [-k key_file=""key.txt""] [-s key_size (16, 24, 32)] [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] [-p plaintext_file] [-c ciphertext_file]" << endl;
+            cout << usage << endl;
             return 1;
         case '?':
             if (optopt == 'k')
@@ -122,7 +129,7 @@ int main(int argc, const char * argv[])
                 fprintf (stderr, "Option -%c requires a plaintext filename.\n", optopt);
             else if (isprint (optopt)) {
                 fprintf (stderr, "Unknown option `-%c'.\n", optopt);
-            cout << "usage: encrypt [-bv] [-k key_file=""key.txt""] [-s key_size (16, 24, 32)] [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] [-p plaintext_file] [-c ciphertext_file]" << endl;
+            cout << usage << endl;
             } else
                 fprintf (stderr,
                          "Unknown option character `\\x%x'.\n",

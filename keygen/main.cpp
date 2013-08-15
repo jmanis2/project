@@ -39,27 +39,28 @@ int main(int argc, char *argv[])
 {
     // Set default values
     int key_size = AES::DEFAULT_KEYLENGTH;
-    string key_file= "key.txt";
+    string key_file = "key_16.txt";
     bool verbose_bool = true;
+    string usage = "usage: keygen [-b] [-s key_size_in_bytes (16, 24, 32) default=16]";
     
     // Parse the command line options
     int opt; // Varialbe to hold the current option for getops
     while ((opt = getopt (argc, argv, "hs:v")) != -1)
         switch (opt)
     {
-        case 'k':
+        case 's':
             key_size = atoi(optarg);
             key_file = "key_" + string(optarg) + ".txt";
             break;
         case 'h':
-            cout << "usage: keygen [-b] [-s key_size_in_bytes (16, 24, 32) default=16]" << endl;
+            cout << usage << endl;
             return 1;
         case '?':
-            if (optopt == 'k')
+            if (optopt == 's')
                 fprintf (stderr, "Option -%c requires a key length arguement (in bytes).\n", optopt);
             else if (isprint (optopt)) {
                 fprintf (stderr, "Unknown option `-%c'.\n", optopt);
-                cout << "usage: keygen [-b] [-s key_size_in_bytes (16, 24, 32) default=16]"  << endl;
+                cout << usage  << endl;
             } else
                 fprintf (stderr,
                          "Unknown option character `\\x%x'.\n",
