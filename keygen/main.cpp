@@ -40,7 +40,8 @@ int main(int argc, char *argv[])
     // Set default values
     int key_size = AES::DEFAULT_KEYLENGTH;
     string key_file = "key_16.txt";
-    bool verbose_bool = true;
+    bool verbose_bool = false;
+    bool binaryfile_bool = false;
     string usage = "usage: keygen [-b] [-s key_size_in_bytes (16, 24, 32) default=16]";
     
     // Parse the command line options
@@ -52,6 +53,10 @@ int main(int argc, char *argv[])
             key_size = atoi(optarg);
             key_file = "key_" + string(optarg) + ".txt";
             break;
+        case 'v':
+            verbose_bool=true;
+        case 'b':
+            binaryfile_bool = true;
         case 'h':
             cout << usage << endl;
             return 1;
@@ -85,7 +90,7 @@ int main(int argc, char *argv[])
     // Save a non-binary file
     StringSource(key, key.size(), true,
                  new HexEncoder(
-                                new FileSink(key_file.c_str(), false /* non-binary */ )
+                                new FileSink(key_file.c_str(), binaryfile_bool /* non-binary */ )
                                 ) // HexEncoder
                  );// StringSource
     

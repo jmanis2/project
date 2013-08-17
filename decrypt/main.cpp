@@ -66,11 +66,12 @@ int main(int argc, const char * argv[])
     string plaintext_file = "plaintext.txt";        // Set default plain text filename
     string ciphertext_file = "ciphertext.txt";      // Set default cipher text filename
     string key_file = "key.txt";                    // Set default key filename
+    string iv_file = "iv.txt";                      // Set default key filename
     string mode = "ALL";                            // Set default mode to ALL (helps with debuging)
     int key_size=AES::DEFAULT_KEYLENGTH;            // Set default key size
     bool binaryfile_bool = false;                   // By default create non-boolean files
-    bool verbose_bool = true;                       // By default do not be verbose
-    int performance_loop = 20;                      // Set default number of loops
+    bool verbose_bool = false;                      // By default do not be verbose
+    int performance_loop = 1;                       // Set default number of loops
     int iv_size = AES::BLOCKSIZE;                   // Set default IV size to AES::blocksize
     string usage = "usage: decrypt [-bv] [-k key_file] [-s key_size (16, 24, 32)] [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] [-p plaintext_file] [-c ciphertext_file]";
     
@@ -86,7 +87,7 @@ int main(int argc, const char * argv[])
     // Parse the command line options
     int opt;  // Holds the current option being parsed for getopt
     
-    while ((opt = getopt (argc, (char **)argv, "bhk:l:p:m:c:s:")) != -1)
+    while ((opt = getopt (argc, (char **)argv, "bhk:l:p:m:c:s:v")) != -1)
         switch (opt)
     {
         case 'b':
@@ -141,17 +142,21 @@ int main(int argc, const char * argv[])
     byte iv[iv_size];
     
     // Read the key into an array using arraysink
-    FileSource kf(key_file.c_str(), true,
+    FileSource (key_file.c_str(), true,
                   new HexDecoder(new ArraySink(key, key_size)), false /* non-binary */); // FileSource
-    
+
+    // Read the iv into an array using arraysink
+    FileSource (iv_file.c_str(), true,
+                  new HexDecoder(new ArraySink(iv, iv_size)), false /* non-binary */); // FileSource
+
     if (verbose_bool) {
-        ArraySource ssk(key, key_size, true /*pumpAll*/,
+        ArraySource (key, key_size, true /*pumpAll*/,
                         new HexEncoder(
                                        new StringSink(encodedKey)
                                        ) // HexDecoder
                         ); // StringSource
         
-        ArraySource ssv(iv, AES::BLOCKSIZE, true /*pumpAll*/,
+        ArraySource (iv, AES::BLOCKSIZE, true /*pumpAll*/,
                         new HexEncoder(
                                        new StringSink(encodedIv)
                                        ) // HexDecoder
@@ -206,6 +211,9 @@ int main(int argc, const char * argv[])
                 
                 // Stop the timer and output the result to stdout
                 t.stop();
+                
+                // Output time in miliseconds if verbose or all modes
+                if (verbose_bool || mode=="ALL" )
                 cout << t.getElapsedTimeInMilliSec() << "   ";
                 
                 
@@ -250,6 +258,9 @@ int main(int argc, const char * argv[])
                 
                 // Stop the timer and output the result to stdout
                 t.stop();
+                
+                // Output time in miliseconds if verbose or all modes
+                if (verbose_bool || mode=="ALL" )
                 cout << t.getElapsedTimeInMilliSec() << "   ";
                 
             }
@@ -293,6 +304,9 @@ int main(int argc, const char * argv[])
                 
                 // Stop the timer and output the result to stdout
                 t.stop();
+                
+                // Output time in miliseconds if verbose or all modes
+                if (verbose_bool || mode=="ALL" )
                 cout << t.getElapsedTimeInMilliSec() << "   ";
                 
             }
@@ -337,6 +351,9 @@ int main(int argc, const char * argv[])
                 
                 // Stop the timer and output the result to stdout
                 t.stop();
+                
+                // Output time in miliseconds if verbose or all modes
+                if (verbose_bool || mode=="ALL" )
                 cout << t.getElapsedTimeInMilliSec() << "   ";
                 
             }
@@ -381,6 +398,9 @@ int main(int argc, const char * argv[])
                 
                 // Stop the timer and output the result to stdout
                 t.stop();
+                
+                // Output time in miliseconds if verbose or all modes
+                if (verbose_bool || mode=="ALL" )
                 cout << t.getElapsedTimeInMilliSec() << endl;
                 
             }
