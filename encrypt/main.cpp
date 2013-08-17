@@ -74,13 +74,14 @@ int main(int argc, const char * argv[])
     string plaintext_file = "plaintext.txt";        // Set default plain text filename
     string ciphertext_file = "ciphertext.txt";      // Set default cipher text filename
     string key_file = "key.txt";                    // Set default key filename
+    string iv_file = "iv.txt";                      // Set default key filename
     string mode = "ALL";                            // Set default mode to ALL helps with debuging
     int key_size=AES::DEFAULT_KEYLENGTH;            // Set default key length
     bool binaryfile_bool = false;                   // By default create non-boolean files
-    bool verbose_bool = true;                       // By default do not be verbose
-    int performance_loop = 20;                      // Set default number of loops
+    bool verbose_bool = false;                      // By default do not be verbose
+    int performance_loop = 1;                       // Set default number of loops
     int iv_size = AES::BLOCKSIZE;                   // Set default iv_size to AES::BLOCKSIZE
-    string usage = "usage: encrypt [-bv] [-k key_file=""key.txt""] [-s key_size (16, 24, 32)] [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] [-p plaintext_file] [-c ciphertext_file]";
+    string usage = "usage: encrypt [-v] [-k key_file=""key.txt""] [-s key_size (16, 24, 32)] [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] [-p plaintext_file] [-c ciphertext_file]";
     
     // Check the arguments and see if options were specified and if not print help
     if (argc == 1) {
@@ -91,13 +92,10 @@ int main(int argc, const char * argv[])
     // Parse the command line options
     int opt;  // Holds the current option being parsed for getopt
     
-    while ((opt = getopt (argc, (char **)argv, "bhk:l:p:m:s:c:")) != -1)
+    while ((opt = getopt (argc, (char **)argv, "bhk:l:p:m:s:c:v")) != -1)
         switch (opt)
     {
-        case 'b':
-            binaryfile_bool = true;
-            break;
-        case 'k':
+            case 'k':
             key_file = optarg;
             break;
         case 'p':
@@ -125,11 +123,19 @@ int main(int argc, const char * argv[])
         case '?':
             if (optopt == 'k')
                 fprintf (stderr, "Option -%c requires a key filename.\n", optopt);
+            else if (optopt == 's')
+                fprintf (stderr, "Option -%c requires a key length arguement in bytes (16, 24, 32).\n", optopt);
+            else if (optopt == 'm')
+                fprintf (stderr, "Option -%c requires a mode arguement (ECB, CBC, OFB, CFB, CTR).\n", optopt);
             else if (optopt == 'p')
                 fprintf (stderr, "Option -%c requires a plaintext filename.\n", optopt);
+            else if (optopt == 'c')
+                fprintf (stderr, "Option -%c requires a ciphertext filename.\n", optopt);
+            else if (optopt == 'l')
+                fprintf (stderr, "Option -%c requires an integer number of loops to perform.\n", optopt);
             else if (isprint (optopt)) {
                 fprintf (stderr, "Unknown option `-%c'.\n", optopt);
-            cout << usage << endl;
+                cout << usage << endl;
             } else
                 fprintf (stderr,
                          "Unknown option character `\\x%x'.\n",
@@ -146,7 +152,7 @@ int main(int argc, const char * argv[])
     byte iv[iv_size];
     
     // Read the key into an array using arraysink
-    FileSource kf(key_file.c_str(), true,
+    FileSource (key_file.c_str(), true,
                   new HexDecoder(
                                  new ArraySink(key, key_size)
                                  ) //HexDecoder
@@ -155,6 +161,16 @@ int main(int argc, const char * argv[])
     // Generate random IV
     prng.GenerateBlock(iv, sizeof(iv));
     
+    //Save IV to file -- This is a functionality issue as crpyto++ does not support outputing
+    if (mode!="ECB") {
+    StringSource(iv, sizeof(iv), true,
+                 new HexEncoder(
+                                new FileSink(iv_file.c_str(), false /* non-binary */ )
+                                ) // HexEncoder
+                 );// StringSource
+    }
+    
+    // If verbose mode is on print the key and iv to stdout
     if (verbose_bool){
         // Encode key into hex for printing //DEBUG
         encoded.clear();
@@ -178,7 +194,7 @@ int main(int argc, const char * argv[])
     }
     
     // Set up the stdout header if in performance test mode
-    if (performance_loop > 1) {
+    if (mode == "ALL") {
         cout << "ECB    |   CBC     |   OFB     |   CFB     |   CTR     |   Encrypt Time (ms)" << endl;
     }
     
@@ -219,6 +235,9 @@ int main(int argc, const char * argv[])
                 
                 // Stop the timer and output the result to stdout
                 t.stop();
+                
+                // Output time in miliseconds if verbose or all modes
+                if (verbose_bool || mode=="ALL" )
                 cout << t.getElapsedTimeInMilliSec() << "   ";
                 
             }
@@ -300,8 +319,9 @@ int main(int argc, const char * argv[])
                 // Stop the timer
                 t.stop();
                 
-                // Perform output to stdout of performance stats
-                cout << t.getElapsedTimeInSec() << "    ";
+                // Output time in miliseconds if verbose or all modes
+                if (verbose_bool || mode=="ALL" )
+                    cout << t.getElapsedTimeInSec() << "    ";
             }
             
             catch(const CryptoPP::Exception& e)
@@ -343,6 +363,9 @@ int main(int argc, const char * argv[])
                 
                 //Stop timer
                 t.stop();
+                
+                // Output time in miliseconds if verbose or all modes
+                if (verbose_bool || mode=="ALL" )
                 cout << t.getElapsedTimeInSec() << "    ";
                 
             }
@@ -384,6 +407,9 @@ int main(int argc, const char * argv[])
                 
                 //Stop timer
                 t.stop();
+                
+                // Output time in miliseconds if verbose or all modes
+                if (verbose_bool || mode=="ALL" )
                 cout << t.getElapsedTimeInSec() << "   ";
             }
             catch(const CryptoPP::Exception& e)
@@ -427,6 +453,9 @@ int main(int argc, const char * argv[])
                 
                 //Stop timer
                 t.stop();
+                
+                // Output time in miliseconds if verbose or all modes
+                if (verbose_bool || mode=="ALL" )
                 cout << t.getElapsedTimeInSec() << "   " << endl;
                 
             }
