@@ -65,10 +65,10 @@ int main(int argc, const char * argv[])
     // Set up default options
     string plaintext_file = "plaintext.txt";        // Set default plain text filename
     string ciphertext_file = "ciphertext.txt";      // Set default cipher text filename
-    string key_file = "key.txt";                    // Set default key filename
+    string key_file = "key_16.txt";                    // Set default key filename
     string iv_file = "iv.txt";                      // Set default key filename
     string mode = "ALL";                            // Set default mode to ALL (helps with debuging)
-    int key_size=AES::DEFAULT_KEYLENGTH;            // Set default key size
+    int key_size = AES::DEFAULT_KEYLENGTH;            // Set default key size
     bool binaryfile_bool = false;                   // By default create non-boolean files
     bool verbose_bool = false;                      // By default do not be verbose
     int performance_loop = 1;                       // Set default number of loops
