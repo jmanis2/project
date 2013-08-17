@@ -42,11 +42,11 @@ int main(int argc, char *argv[])
     string key_file = "key_16.txt";
     bool verbose_bool = false;
     bool binaryfile_bool = false;
-    string usage = "usage: keygen [-b] [-s key_size_in_bytes (16, 24, 32) default=16]";
+    string usage = "usage: keygen [-hv] [-s key_size_in_bytes (16, 24, 32) default=16]";
     
     // Parse the command line options
     int opt; // Varialbe to hold the current option for getops
-    while ((opt = getopt (argc, argv, "hs:v")) != -1)
+    while ((opt = getopt (argc, argv, "hs:vb")) != -1)
         switch (opt)
     {
         case 's':
@@ -54,15 +54,14 @@ int main(int argc, char *argv[])
             key_file = "key_" + string(optarg) + ".txt";
             break;
         case 'v':
-            verbose_bool=true;
-        case 'b':
-            binaryfile_bool = true;
+            verbose_bool = true;
+            break;
         case 'h':
             cout << usage << endl;
             return 1;
         case '?':
             if (optopt == 's')
-                fprintf (stderr, "Option -%c requires a key length arguement (in bytes).\n", optopt);
+                fprintf (stderr, "Option -%c requires a key length arguement in bytes (16, 24, 32).\n", optopt);
             else if (isprint (optopt)) {
                 fprintf (stderr, "Unknown option `-%c'.\n", optopt);
                 cout << usage  << endl;
@@ -87,12 +86,11 @@ int main(int argc, char *argv[])
         cout << " key_size: " << key.size() << " bytes" << endl;
     }
     
-    // Save a non-binary file
+    // Save key file
     StringSource(key, key.size(), true,
                  new HexEncoder(
-                                new FileSink(key_file.c_str(), binaryfile_bool /* non-binary */ )
+                                new FileSink(key_file.c_str(), binaryfile_bool /*binary_flag */ )
                                 ) // HexEncoder
                  );// StringSource
-    
     return 0;
 }

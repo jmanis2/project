@@ -73,7 +73,7 @@ int main(int argc, const char * argv[])
     bool verbose_bool = false;                      // By default do not be verbose
     int performance_loop = 1;                       // Set default number of loops
     int iv_size = AES::BLOCKSIZE;                   // Set default IV size to AES::blocksize
-    string usage = "usage: decrypt [-bv] [-k key_file] [-s key_size (16, 24, 32)] [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] [-p plaintext_file] [-c ciphertext_file]";
+    string usage = "usage: decrypt [-v] [-k key_file] [-s key_size (16, 24, 32)] [-m mode (CBC, OFB, CFB, ECB, CTR)] [-l loop_count] [-p plaintext_file] [-c ciphertext_file]";
     
     // Other variables that can be deleted in final version
     string encodedKey, encodedIv;
@@ -87,12 +87,9 @@ int main(int argc, const char * argv[])
     // Parse the command line options
     int opt;  // Holds the current option being parsed for getopt
     
-    while ((opt = getopt (argc, (char **)argv, "bhk:l:p:m:c:s:v")) != -1)
+    while ((opt = getopt (argc, (char **)argv, "hk:l:p:m:c:s:v")) != -1)
         switch (opt)
     {
-        case 'b':
-            binaryfile_bool = true;
-            break;
         case 'k':
             key_file = optarg;
             break;
@@ -121,8 +118,16 @@ int main(int argc, const char * argv[])
         case '?':
             if (optopt == 'k')
                 fprintf (stderr, "Option -%c requires a key filename.\n", optopt);
+            else if (optopt == 's')
+                fprintf (stderr, "Option -%c requires a key length arguement in bytes (16, 24, 32).\n", optopt);
+            else if (optopt == 'm')
+                fprintf (stderr, "Option -%c requires a mode arguement (ECB, CBC, OFB, CFB, CTR).\n", optopt);
             else if (optopt == 'p')
                 fprintf (stderr, "Option -%c requires a plaintext filename.\n", optopt);
+            else if (optopt == 'c')
+                fprintf (stderr, "Option -%c requires a ciphertext filename.\n", optopt);
+            else if (optopt == 'l')
+                fprintf (stderr, "Option -%c requires an integer number of loops to perform.\n", optopt);
             else if (isprint (optopt)) {
                 fprintf (stderr, "Unknown option `-%c'.\n", optopt);
                 cout << usage << endl;
