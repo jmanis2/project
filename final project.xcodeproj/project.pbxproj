@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0DBE9317C167CC0014660B /* Timer.h in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DBE9217C167AE0014660B /* Timer.h */; };
+		1F0DBE9417C167D60014660B /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DBE9117C167AE0014660B /* Timer.cpp */; };
+		1F0DBE9517C167F00014660B /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DBE9117C167AE0014660B /* Timer.cpp */; };
 		1F259267179F160B003D388B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F259266179F160B003D388B /* main.cpp */; };
 		1F259269179F160B003D388B /* encrypt.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F259268179F160B003D388B /* encrypt.1 */; };
 		1F259274179F161F003D388B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F259273179F161F003D388B /* main.cpp */; };
 		1F259276179F161F003D388B /* decrypt.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F259275179F161F003D388B /* decrypt.1 */; };
 		1F259281179F166A003D388B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F259280179F166A003D388B /* main.cpp */; };
 		1F259283179F166A003D388B /* keygen.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F259282179F166A003D388B /* keygen.1 */; };
-		1F7623CD17BD795700923F70 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F7623CC17BD795700923F70 /* Timer.cpp */; };
-		1F7623CE17BD795700923F70 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F7623CC17BD795700923F70 /* Timer.cpp */; };
-		1F7623CF17BD795700923F70 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F7623CC17BD795700923F70 /* Timer.cpp */; };
 		1FD31E9B17A095A50021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
 		1FD31E9C17A095A50021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
 		1FD31E9D17A095A50021D1EB /* libcryptopp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD31E9A17A095A40021D1EB /* libcryptopp.a */; };
@@ -55,6 +55,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F0DBE9117C167AE0014660B /* Timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		1F0DBE9217C167AE0014660B /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		1F259264179F160B003D388B /* encrypt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = encrypt; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F259266179F160B003D388B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1F259268179F160B003D388B /* encrypt.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = encrypt.1; sourceTree = "<group>"; };
@@ -64,8 +66,6 @@
 		1F25927E179F166A003D388B /* keygen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = keygen; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F259280179F166A003D388B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1F259282179F166A003D388B /* keygen.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = keygen.1; sourceTree = "<group>"; };
-		1F7623CB17BD789D00923F70 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
-		1F7623CC17BD795700923F70 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		1FD31E9A17A095A40021D1EB /* libcryptopp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcryptopp.a; sourceTree = "<group>"; };
 		1FF6462617B841BD00AD1A6F /* 3way.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 3way.h; sourceTree = "<group>"; };
 		1FF6462717B841BD00AD1A6F /* adler32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = adler32.h; sourceTree = "<group>"; };
@@ -232,12 +232,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F0DBE9017C167AE0014660B /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				1F0DBE9117C167AE0014660B /* Timer.cpp */,
+				1F0DBE9217C167AE0014660B /* Timer.h */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
 		1F259246179F0D7C003D388B = {
 			isa = PBXGroup;
 			children = (
+				1F0DBE9017C167AE0014660B /* Timer */,
 				1FF6462517B841BD00AD1A6F /* cryptopp headers */,
 				1FD31E9F17A095AD0021D1EB /* library files */,
-				1F7623D017BD7DD700923F70 /* Timer */,
 				1F259265179F160B003D388B /* encrypt */,
 				1F259272179F161F003D388B /* decrypt */,
 				1F25927F179F166A003D388B /* keygen */,
@@ -280,16 +289,6 @@
 				1F259282179F166A003D388B /* keygen.1 */,
 			);
 			path = keygen;
-			sourceTree = "<group>";
-		};
-		1F7623D017BD7DD700923F70 /* Timer */ = {
-			isa = PBXGroup;
-			children = (
-				1F7623CB17BD789D00923F70 /* Timer.h */,
-				1F7623CC17BD795700923F70 /* Timer.cpp */,
-			);
-			name = Timer;
-			path = encrypt;
 			sourceTree = "<group>";
 		};
 		1FD31E9F17A095AD0021D1EB /* library files */ = {
@@ -530,7 +529,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F259267179F160B003D388B /* main.cpp in Sources */,
-				1F7623CD17BD795700923F70 /* Timer.cpp in Sources */,
+				1F0DBE9317C167CC0014660B /* Timer.h in Sources */,
+				1F0DBE9417C167D60014660B /* Timer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,7 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F259274179F161F003D388B /* main.cpp in Sources */,
-				1F7623CE17BD795700923F70 /* Timer.cpp in Sources */,
+				1F0DBE9517C167F00014660B /* Timer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +548,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F259281179F166A003D388B /* main.cpp in Sources */,
-				1F7623CF17BD795700923F70 /* Timer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
