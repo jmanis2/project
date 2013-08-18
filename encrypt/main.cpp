@@ -221,7 +221,6 @@ int main(int argc, const char * argv[])
                 // start timer
                 t.start();
                 
-                
                 // The StreamTransformationFilter adds padding
                 //  as required. ECB and CBC Mode must be padded
                 //  to the block size of the cipher.
@@ -321,7 +320,7 @@ int main(int argc, const char * argv[])
                 
                 // Output time in miliseconds if verbose or all modes
                 if (verbose_bool || mode=="ALL" )
-                    cout << t.getElapsedTimeInSec() << "    ";
+                    cout << t.getElapsedTimeInMilliSec() << "    ";
             }
             
             catch(const CryptoPP::Exception& e)
@@ -366,7 +365,7 @@ int main(int argc, const char * argv[])
                 
                 // Output time in miliseconds if verbose or all modes
                 if (verbose_bool || mode=="ALL" )
-                cout << t.getElapsedTimeInSec() << "    ";
+                cout << t.getElapsedTimeInMilliSec() << "    ";
                 
             }
             catch(const CryptoPP::Exception& e)
@@ -410,7 +409,7 @@ int main(int argc, const char * argv[])
                 
                 // Output time in miliseconds if verbose or all modes
                 if (verbose_bool || mode=="ALL" )
-                cout << t.getElapsedTimeInSec() << "   ";
+                cout << t.getElapsedTimeInMilliSec() << "   ";
             }
             catch(const CryptoPP::Exception& e)
             {
@@ -456,7 +455,7 @@ int main(int argc, const char * argv[])
                 
                 // Output time in miliseconds if verbose or all modes
                 if (verbose_bool || mode=="ALL" )
-                cout << t.getElapsedTimeInSec() << "   " << endl;
+                cout << t.getElapsedTimeInMilliSec() << "   " << endl;
                 
             }
             catch(const CryptoPP::Exception& e)

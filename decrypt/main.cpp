@@ -148,15 +148,19 @@ int main(int argc, const char * argv[])
     
     // Read the key into an array using arraysink
     FileSource (key_file.c_str(), true,
-                  new HexDecoder(new ArraySink(key, key_size)), false /* non-binary */); // FileSource
-
-    // Read the iv into an array using arraysink
-    FileSource (iv_file.c_str(), true,
-                  new HexDecoder(new ArraySink(iv, iv_size)), false /* non-binary */); // FileSource
-
+                new HexDecoder(new ArraySink(key, key_size)), false /* non-binary */); // FileSource
+    
+    // See if we need to read in an IV for non-ECB modes
+    if (mode!="ECB"||mode!="ALL") {
+        // Read the iv into an array using arraysink
+        FileSource (iv_file.c_str(), true,
+                    new HexDecoder(new ArraySink(iv, iv_size)), false /* non-binary */); // FileSource
+    }
+    
+    
     if (verbose_bool) {
         ArraySource (key, key_size, true /*pumpAll*/,
-                        new HexEncoder(
+                     new HexEncoder(
                                        new StringSink(encodedKey)
                                        ) // HexDecoder
                         ); // StringSource
@@ -167,8 +171,13 @@ int main(int argc, const char * argv[])
                                        ) // HexDecoder
                         ); // StringSource
         
+        // Print the key
         cout << "key: " << encodedKey << endl;
-        cout << "iv: " << encodedIv << endl;
+        
+        // Print the IV (if necessary)
+        if (mode!="ECB"||mode!="ALL")
+            cout << "iv: " << encodedIv << endl;
+        
     }
     
     // Set up the stdout header
@@ -192,7 +201,6 @@ int main(int argc, const char * argv[])
                 if (mode == "ALL") {
                     ciphertext_file = "ciphertextecb.txt";
                     plaintext_file = "plaintextecb.txt";
-                    
                 }
                 
                 // start timer
@@ -220,7 +228,6 @@ int main(int argc, const char * argv[])
                 // Output time in miliseconds if verbose or all modes
                 if (verbose_bool || mode=="ALL" )
                 cout << t.getElapsedTimeInMilliSec() << "   ";
-                
                 
             }
             catch(const CryptoPP::Exception& e)
